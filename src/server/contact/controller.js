@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
+var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 var app = express();
 
 app.use(express.static(__dirname + '/client'));
@@ -13,7 +14,7 @@ app.post('/sendmail', function(req, res){
     var options = {
         auth: {
             //api_key: 'YOUR_SENDGRID_API_KEY'
-            api_key: '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'
+            api_key: sg
         }
     }
     var mailer = nodemailer.createTransport(sgTransport(options));
