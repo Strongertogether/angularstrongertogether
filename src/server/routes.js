@@ -1,14 +1,19 @@
 var router = require('express').Router();
-var four0four = require('./utils/404')();
+//var four0four = require('./utils/404')();
+//var data = require('./data');
 var data = require('./data');
 
-router.get('/people', getPeople);
-router.get('/person/:id', getPerson);
-router.get('/*', four0four.notFoundMiddleware);
+//router.get('/people', getPeople);
+//router.get('/person/:id', getPerson);
+//router.get('/*', four0four.notFoundMiddleware);
+//router.post('/sendemail', sendemail);
 
 module.exports = router;
 
-//////////////
+
+/*function sendemail(req, res, next) {
+  email.sendemail(req,res);
+}*/
 
 function getPeople(req, res, next) {
   res.status(200).send(data.people);

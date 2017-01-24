@@ -32,17 +32,17 @@
 			    <form id="contact_form" name="contact_form"><br>
 
 			        <div class="control-group">
-									<input required ng-model="contact.inputName" type="text" id="inputName" name="inputName" placeholder="Name"  dir="auto" maxlength="100">
-									<span class="text-danger" ng-show="contact_form.inputName.$error.required && (contact_form.inputName.$dirty || contact_form.inputName.$touched)">El campo es obligatorio</span>
+									<input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="Name *"  dir="auto" maxlength="100">
+									<span class="text-danger" ng-show="vm.inputName.$error.required && (vm.inputName.$dirty || vm.inputName.$touched)">El campo es obligatorio</span>
 							</div>
 			        <div class="control-group">
-									<input required ng-model="contact.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" maxlength="100" ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
-            			<span class="text-danger" ng-show="contact_form.inputEmail.$error.required && (contact_form.inputEmail.$dirty || contact_form.inputEmail.$touched)">El campo es obligatorio</span>
-            			<span class="text-danger" ng-show="contact_form.inputEmail.$error.email">Email no valido</span>
+									<input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" maxlength="100" ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
+            			<span class="text-danger" ng-show="vm.inputEmail.$error.required && (vm.inputEmail.$dirty || vm.inputEmail.$touched)">El campo es obligatorio</span>
+            			<span class="text-danger" ng-show="vm.inputEmail.$error.email">Email no valido</span>
 							</div>
 			        <div class="control-group">
 			            <label for="sel1">Subject</label>
-			            <select ng-model="contact.inputSubject" class="form-control" id="inputSubject" name="inputSubject" title="Choose subject">
+			            <select ng-model="vm.inputSubject" class="form-control" id="inputSubject" name="inputSubject" title="Choose subject">
 			                <option value="compra">Info relativa a tu compra</option>
 			                <option value="evento">Celebra un evento con nosotros</option>
 			                <option value="programacion">Contacta con nuestro dpto de programacion</option>
@@ -58,14 +58,14 @@
 			            </select>
 			        </div>
 			        <div class="control-group">
-										<textarea required ng-model="contact.inputMessage" rows="4" id="inputMessage" name="inputMessage" placeholder="Introduzca aqui su mensaje *" style="max-width: 100%;" dir="auto"></textarea>
-            <span class="text-danger" ng-show="contact_form.inputMessage.$error.required && (contact_form.inputMessage.$dirty || contact_form.inputMessage.$touched)">El campo es obligatorio</span>
+										<textarea required ng-model="vm.inputMessage" rows="4" id="inputMessage" name="inputMessage" placeholder="Introduzca aqui su mensaje *" style="max-width: 100%;" dir="auto"></textarea>
+            <span class="text-danger" ng-show="vm.inputMessage.$error.required && (vm.inputMessage.$dirty || vm.inputMessage.$touched)">El campo es obligatorio</span>
 							</div>
 
 			        <input type="hidden" name="token" value="contact_form" />
 							<div class="submit-btn">
 			        <input  type="submit" name="submit" id="submitBtn" value="send"
-							ng-show="contact_form.inputName.$valid && contact_form.inputEmail.$valid && contact_form.inputMessage.$valid"
+							ng-show="vm.inputName.$valid && vm.inputEmail.$valid && vm.inputMessage.$valid"
                ng-click="SubmitContact()"/>
 						</div>
 			        <img src="src/client/images/ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" /><br/><br/>

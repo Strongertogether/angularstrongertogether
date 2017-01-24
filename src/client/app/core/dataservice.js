@@ -9,16 +9,17 @@
   /* @ngInject */
   function dataservice($http, $q, exception, logger) {
     var service = {
-      getPeople: getPeople,
-      getMessageCount: getMessageCount
+      sendemail: sendemail
+      //getPeople: getPeople,
+      //getMessageCount: getMessageCount
     };
 
     return service;
 
     function getMessageCount() { return $q.when(72); }
 
-    function getPeople() {
-      return $http.get('/api/people')
+    function sendemail(data){
+      return $http.post('/api/sendemail',data)
         .then(success)
         .catch(fail);
 
@@ -30,5 +31,34 @@
         return exception.catcher('XHR Failed for getPeople')(e);
       }
     }
+
+    /*function getPeople() {
+      return $http.get('/api/people')
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for getPeople')(e);
+      }
+    }*/
+
+    function getMenus() {
+      return $http.get('/api/menus')
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for getMenus')(e);
+      }
+    }
+
   }
 })();

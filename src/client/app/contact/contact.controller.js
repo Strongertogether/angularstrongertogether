@@ -9,58 +9,41 @@
   /* @ngInject */
   function ContactController($q, dataservice, logger) {
     var vm = this;
-    vm.news = {
-      title: 'Contact module',
-      description: 'Hot Towel Angular is a SPA template for Angular developers.'
-    };
-    vm.messageCount = 0;
-    vm.people = [];
-    vm.title = 'contact';
 
-    activate();
+    vm.title = 'Contact';
+    vm.inputName = '';
+    vm.inputEmail = '';
+    vm.inputSubject = '';
+    vm.inputMessage = '';
+    vm.SubmitContact = SubmitContact;
 
-    function activate() {
-      var promises = [getMessageCount(), getPeople()];
-      return $q.all(promises).then(function() {
-        logger.info('Activated Contact View');
+
+    function sendContact() {
+
+      var data = {
+        name: vm.inputName,
+        from: vm.inputEmail,
+        to: 'strongertogetherdaw@gmail.com',
+        subject: vm.inputSubject,
+        text: vm.inputMessage,
+      };
+
+      dataservice.sendEmail(data).then(function(response) {
+
+        if (response) {
+          vm.resultMessage = 'Su email ha sido enviado correctamente';
+          vm.inputName = '';
+          vm.inputEmail = '';
+          vm.inputSubject = '';
+          vm.inputMessage = '';
+        } else {
+          vm.resultMessage =
+            'Ha habido un error al enviar el email, intentelo mas tarde';
+        }
       });
+
     }
 
-    function getMessageCount() {
-      return dataservice.getMessageCount().then(function(data) {
-        vm.messageCount = data;
-        return vm.messageCount;
-      });
-    }
-
-    function getPeople() {
-      return dataservice.getPeople().then(function(data) {
-        vm.people = data;
-        return vm.people;
-      });
-    }
   }
+
 })();
-
-/*app.controller('contactCtrl', function ($scope, services) {
-    $scope.contact = {
-        inputName: "",
-        inputEmail: "",
-        inputSubject: "",
-        inputMessage: ""
-    };
-
-    $scope.SubmitContact = function () {
-        var data = {"inputName": $scope.contact.inputName, "inputEmail": $scope.contact.inputEmail, "inputSubject": $scope.contact.inputSubject, "inputMessage": $scope.contact.inputMessage,"token":'contact_form'};
-        var contact_form = JSON.stringify(data);
-        services.post('contact', 'process_contact', contact_form).then(function (response) {
-            response = response.split("|");
-            $scope.message = response[1];
-            if (response[0].substring(1,5) == 'true') {
-                $scope.class = 'alert alert-success';
-            } else {
-                $scope.class = 'alert alert-error';
-            }
-        });
-    };
-});*/
