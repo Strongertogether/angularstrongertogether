@@ -7,9 +7,11 @@
 
   dataservice.$inject = ['$http', '$q', 'exception', 'logger'];
   /* @ngInject */
+
   function dataservice($http, $q, exception, logger) {
     var service = {
-      sendemail: sendemail
+      sendemail: sendemail,
+      getSpecialists: getSpecialists
       //getPeople: getPeople,
       //getMessageCount: getMessageCount
     };
@@ -17,6 +19,20 @@
     return service;
 
     function getMessageCount() { return $q.when(72); }
+
+    function getSpecialists() {
+      return $http.get('/api/specialists')
+        .then(success)
+        .catch(fail);
+
+      function success(response) {
+        return response.data;
+      }
+
+      function fail(e) {
+        return exception.catcher('XHR Failed for getSpecialists')(e);
+      }
+    }
 
     function sendemail(data){
       return $http.post('/api/sendemail',data)
@@ -45,20 +61,6 @@
         return exception.catcher('XHR Failed for getPeople')(e);
       }
     }*/
-
-    function getMenus() {
-      return $http.get('/api/menus')
-        .then(success)
-        .catch(fail);
-
-      function success(response) {
-        return response.data;
-      }
-
-      function fail(e) {
-        return exception.catcher('XHR Failed for getMenus')(e);
-      }
-    }
 
   }
 })();

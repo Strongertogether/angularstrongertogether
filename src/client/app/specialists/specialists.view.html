@@ -7,36 +7,21 @@
 
       <div>
           <div id='ubicacion'></div>
-          <!-- Se escribe un mapa con la localizacion anterior-->
-          <div id="error"></div><!--muestra mensaje de error si lo hay-->
+          <div id="error"></div>
           <div id="mapholder"></div>
           <div class="specialists">
               <div ng-repeat="specialists in vm.specialists" id="{{specialists.id}}">
                   <div >
-                      <div class="details" ><a href='#/specialists'>
-                        <div class="inline"><img class="list" src="{{specialists.foto_specialists}}" alt="Imagen de specialists"/></div>
-                        <div class="inline"><h3>{{specialists.nombre}}</h3><div> {{specialists.poblacion}}</div><div >Menú: {{specialists.precio_specialists }} €</div>  </div>
-                        <div class="inline"><h3>' + of[i].nombre + '</h3><div> ' + of[i].poblacion + '</div><div >Menú: ' + of[i].precio_specialist + ' €</div>  </div>
-                        <div class="inline"><img class="stars" src="frontend/modules/oferta_specialists/view/img/estrellas-{{specialists.valoracion}}.png" alt="Imagen de valoracion"></div>
-                      </a></div>
+                    <div class="details" >
+                      <a href='#/specialists'>
+                        <div class="inline"><h3>{{specialists.name}}</h3></div>
+                      </a>
+                    </div>
                   </div>
               </div>
               <div id="pager">
                   <uib-pagination total-items="menu.length" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
               </div>
-            <!--<div ng-repeat="menu in filteredOferta_menus| filter:filtro" id="{{menu.id}}">
-                  <div ng-click="select(menu.id)">
-                      <div class="details" ><a href='#/ofertas/{{menu.id}}'>
-                        <div class="inline"><img class="list" src="{{menu.foto}}"/></div>
-                        <div class="inline"><h3>{{menu.nombre}}</h3><div> {{menu.poblacion}}</div><div >Menú: {{menu.precio_menu }} €</div>  </div>
-                        <div class="inline"><h3>' + of[i].nombre + '</h3><div> ' + of[i].poblacion + '</div><div >Menú: ' + of[i].precio_menu + ' €</div>  </div>
-                        <div class="inline"><img class="stars" src="frontend/modules/oferta_menus/view/img/estrellas-{{menu.valoracion}}.png"></div>
-                      </a></div>
-                  </div>
-              </div>
-              <div id="pager">
-                  <uib-pagination total-items="menu.length" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
-              </div>-->
           </div>
       </div>
   </section>

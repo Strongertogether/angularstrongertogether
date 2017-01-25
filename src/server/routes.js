@@ -2,9 +2,14 @@ var router = require('express').Router();
 //var four0four = require('./utils/404')();
 //var data = require('./data');
 var data = require('./data');
+var Specialists = require('./specialists/specialists.model');
 
 //router.get('/people', getPeople);
 //router.get('/person/:id', getPerson);
+
+router.get('/specialists', Specialists.getSpecialists);
+router.get('/specialist/:id', Specialists.getSpecialist);
+
 //router.get('/*', four0four.notFoundMiddleware);
 //router.post('/sendemail', sendemail);
 

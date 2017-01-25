@@ -3,29 +3,31 @@
 
   angular
     .module('app.specialists')
-    .controller('SpecialistsController', MenusController);
+    .controller('SpecialistsController', SpecialistsController);
 
-  MenusController.$inject = ['$q', 'dataservice', 'logger'];
+  SpecialistsController.$inject = ['$q', 'dataservice', 'logger'];
   /* @ngInject */
-  function MenusController(logger) {
+  function SpecialistsController($q, dataservice, logger) {
+
     var vm = this;
     vm.title = 'Specialists';
     vm.messageCount = 0;
-    vm.menus = [];
+    vm.specialists = [];
 
     activate();
 
     function activate() {
-      var promises = [getMenus()];
+      var promises = [getSpecialists()];
       return $q.all(promises).then(function() {
         logger.info('Activated Specialists View');
       });
     }
 
-    function getMenus(){
-      return dataservice.getMenus().then(function(data) {
-        vm.menus = data;
-        return vm.menus;
+    function getSpecialists(){
+      return dataservice.getSpecialists().then(function(data) {
+        console.log(data);
+        vm.specialists = data;
+        return vm.specialists;
       });
     }
   }
