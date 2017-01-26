@@ -10,6 +10,7 @@
   function dataservice($http, $q, exception, logger) {
     var service = {
       sendemail: sendemail
+      //getSpecialists: getSpecialists
     };
 
     return service;
@@ -30,5 +31,19 @@
         return false;
       }
     }
+
+    /*function getSpecialists() {
+      return $http.post('/api/specialists')
+        .then(success)
+        .catch(fail);
+
+      function success() {
+        eturn true;
+      }
+
+      function fail() {
+        return false;
+      }
+    }*/
   }
 })();

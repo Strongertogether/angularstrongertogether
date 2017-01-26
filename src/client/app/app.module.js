@@ -6,7 +6,8 @@
     'app.widgets',
     'app.main',
     'app.contact',
-    'app.layout'
+    'app.layout',
+    'app.specialists'
   ]);
 
 })();

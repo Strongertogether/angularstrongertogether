@@ -1,0 +1,28 @@
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALz3o_cMEcTa8pzYf5jUhJcBDn48Wlpn8" async defer></script>-->
+<div class="container_maps">
+  <section id="specialists" >
+          <nav class="options">
+              <h2>Specialists <span>disponibles cerca de ti</span></h2>
+          </nav>
+
+      <div>
+          <div id='ubicacion'></div>
+          <div id="error"></div>
+          <div id="mapholder"></div>
+          <div class="specialists">
+              <div ng-repeat="specialists in vm.specialists" id="{{specialists.id}}">
+                  <div >
+                    <div class="details" >
+                      <a href='#/specialists'>
+                        <div class="inline"><h3>{{specialists.name}}</h3></div>
+                      </a>
+                    </div>
+                  </div>
+              </div>
+              <div id="pager">
+                  <uib-pagination total-items="menu.length" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></uib-pagination>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
