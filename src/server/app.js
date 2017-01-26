@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-require('./contact/contact.router.js')(app);
+require('./routes.js')(app);
 //app.use('/api/', require('./contact/contact.router.js'));
 //app.use('/api', require('./routes'));
 

@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
-var sg = require('sendgrid')(process.env.SECRET_KEY);
+//var sg = require('sendgrid')(process.env.SECRET_KEY);
 
 console.log(process.env.SECRET_KEY);
 
@@ -23,12 +23,33 @@ console.log("controller contact server");
     '<html>' +
     '<head>' +
     '<meta charset="utf-8" />' +
-    '<style>'
-        '* {margin: 0;padding: 0; text-align: center;}'
-        'body {margin: 0 auto;width: 600px;height: 300px;}'
-        'header {padding: 20px;background-color: blue;color: white;padding-left: 20px;font-size: 25px;}'
-        'section {padding-top: 50px;padding-left: 50px;margin-top: 3px;margin-bottom: 3px;height: 100px;background-color: ghostwhite;}'
-        'footer {padding: 5px;padding-left: 20px;background-color: blue;color: white;}'
+    '<style>'+
+        '* {'+
+        'margin: 0;'+
+        'padding: 0;'+
+        'text-align: center;}'+
+        'body {'+
+        'margin: 0 auto;'+
+        'width: 600px;'+
+        'height: 300px;}'+
+        'header {'+
+        'padding: 20 px;'+
+        'background-color: blue;'+
+        'color: white;'+
+        'padding-left: 20px;'+
+        'font-size: 25px;}'+
+        'section {'+
+        'padding-top: 50px;'+
+        'padding-left: 50px;'+
+        'margin-top: 3px;'+
+        'margin-bottom: 3px;'+
+        'height: 100px;'+
+        'background-color: ghostwhite;}'+
+        'footer {'+
+        'padding: 5px;'+
+        'padding-left: 20px;'+
+        'background-color: blue;'+
+        'color: white;}'+
     '</style>'+
     '</head>' + body + '</html>';
 
@@ -44,7 +65,7 @@ console.log("controller contact server");
   //Input APIKEY Sendgrid
   var options = {
     auth: {
-      api_key: sg
+      api_key: process.env.SECRET_KEY
     }
   };
   var mailer = nodemailer.createTransport(sgTransport(options));

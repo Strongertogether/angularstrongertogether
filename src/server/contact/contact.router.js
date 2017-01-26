@@ -6,8 +6,8 @@ var email = require('./contact.controller');
   email.sendemail(req,res);
 });*/
 
-module.exports = function(app) {
-    app.post('/api/sendmail', email.sendmail);
+exports.sendmail= function(req,res) {
+    email.sendmail(req,res);
 };
 
 //module.exports = router;
