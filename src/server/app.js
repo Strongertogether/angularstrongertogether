@@ -1,6 +1,7 @@
 /*jshint node:true*/
 'use strict';
 
+require('dotenv').load();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -16,7 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
-app.use('/api', require('./routes'));
+require('./contact/contact.router.js')(app);
+//app.use('/api/', require('./contact/contact.router.js'));
+//app.use('/api', require('./routes'));
 
 console.log('About to crank up node');
 console.log('PORT=' + port);

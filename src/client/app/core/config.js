@@ -13,8 +13,8 @@
   }
 
   var config = {
-    appErrorPrefix: '[Mortgage_calculator Error] ',
-    appTitle: 'Mortgage_calculator'
+    appErrorPrefix: '[Strongertogether Error] ',
+    appTitle: 'Strongertogether'
   };
 
   core.value('config', config);
