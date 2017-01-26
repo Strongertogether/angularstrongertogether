@@ -1,7 +1,7 @@
-var ControllerMenus = require ('./menus.controller');
+var ControllerSpecialists = require ('./specialists.controller');
 
-module.exports = function(app) {
-  app.get('/api/menus', ControllerMenus.getMenus);
+module.exports = function(app) {  
+  app.get('/api/specialists', ControllerSpecialists.getSpecialists);
 
-  app.get('/api/menu/:menu_id', ControllerMenus.getMenus);
+  app.get('/api/specialist/:id', ControllerSpecialists.getSpecialist);
 };

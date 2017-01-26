@@ -1,4 +1,6 @@
-/*var mysql = require('mysql'),
+//var mysql = require('../config.db');
+
+var mysql = require('mysql'),
 connection = mysql.createConnection({
         host: '127.0.0.1',
         user: 'root',
@@ -10,44 +12,10 @@ connection = mysql.createConnection({
 var specialistsModel = {};
 
 // Obtiene todos los objetos Menus de la base de datos
-specialistsModel.getSpecialists = function (req, res){
+specialistsModel.getSpecialists = function (callback){
 
   if (connection) {
-
       connection.query('SELECT * FROM specialists ORDER BY id', function(error, rows) {
-          if(error){
-              throw error;
-          }else{
-              callback(null, rows);
-          }
-      });
-  }
-}
-
-specialistsModel.getSpecialist = function(id,callback){
-    if (connection) {
-        var sql = 'SELECT * FROM specialists WHERE id = ' + connection.escape(id);
-        connection.query(sql, function(error, row) {
-            if(error){
-                throw error;
-            }else{
-                callback(null, row);
-            }
-        });
-    }
-}
-
-module.exports = specialistsModel;
-*/
-
-var mysql = require('../config.db');
-
-var menusModel = {};
-
-// Obtiene todos los objetos Menus de la base de datos
-menusModel.getMenus = function (callback){
-  if (mysql.connection) {
-      mysql.connection.query('SELECT * FROM restaurantes ORDER BY id', function(error, rows) {
           if(error){
               throw error;
           }else{
@@ -58,9 +26,9 @@ menusModel.getMenus = function (callback){
   }
 }
 
-menusModel.getMenu = function(id,callback){
+specialistsModel.getSpecialist = function(id,callback){
     if (connection) {
-        var sql = 'SELECT * FROM restaurantes WHERE id = ' + mysql.connection.escape(id);
+        var sql = 'SELECT * FROM specialists WHERE id = ' + mysql.connection.escape(id);
         mysql.connection.query(sql, function(error, row) {
             if(error){
                 throw error;
@@ -71,4 +39,4 @@ menusModel.getMenu = function(id,callback){
     }
 }
 
-module.exports = menusModel;
+module.exports = specialistsModel;

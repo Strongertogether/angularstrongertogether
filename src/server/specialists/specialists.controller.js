@@ -1,7 +1,8 @@
-var Menus = require('./menus.model.js');
+var Specialists = require('./specialists.model.js');
 
-exports.getMenus = function(req, res) {
-	Menus.getMenus(
+exports.getSpecialists = function(req, res) {
+console.log("ENTRA EN GET SPECIALISTS");
+	Specialists.getSpecialists(
 		function(err, menus) {
 			if (err)
   			res.send(err)
@@ -11,8 +12,8 @@ exports.getMenus = function(req, res) {
 	);
 }
 
-exports.getMenu = function(req, res) {
-	Menus.getMenu( req.param.menu_id,
+exports.getSpecialist = function(req, res) {
+	Specialists.getSpecialist( req.param.menu_id,
 		function(err, menu) {
 			if (err)
   			res.send(err)
