@@ -17,9 +17,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+
 require('./routes.js')(app);
 //app.use('/api/', require('./contact/contact.router.js'));
 //app.use('/api', require('./routes'));
+
+require('./specialists/specialists.router.js')(app);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
