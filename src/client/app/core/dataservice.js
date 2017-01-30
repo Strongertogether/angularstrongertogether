@@ -31,19 +31,18 @@
         return false;
       }
     }
-/*
-    function sendemail(data){
-        return $http.post('/api/sendemail',data)
-          .then(success)
-          .catch(fail);
+    function getSpecialists() {
+         return $http.get('/api/specialists')
+           .then(success)
+           .catch(fail);
 
-        function success(response) {
-          return response.data;
-        }
+         function success(response) {
+           return response.data;
+         }
 
-        function fail(e) {
-          return exception.catcher('XHR Failed for getPeople')(e);
-        }
-      }*/
+         function fail(e) {
+           return exception.catcher('XHR Failed for getSpecialists')(e);
+         }
+       }
   }
 })();
