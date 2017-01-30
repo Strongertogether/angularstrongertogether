@@ -24,6 +24,9 @@
     }
 
     function getSpecialists(){
+
+      console.log(dataservice);
+
       return dataservice.getSpecialists().then(function(data) {
         console.log(data);
         vm.specialists = data;

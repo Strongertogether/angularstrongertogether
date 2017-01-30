@@ -1,0 +1,18 @@
+<section id="main" class="wrapper">
+  Search Hospitals: <input type="text" class="filtre" ng-model="filtro" ><hr>
+<!--   <div class="col-md-6"> -->
+      <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'></ui-gmap-google-map>
+<!--  </div> -->
+  <div class="of"  ng-repeat="hospital in vm.filteredHospitals| filter:{name:filtro}" id="{{tech.id}}">
+      <div>
+          <div class="desc">{{hospital.name}} {{hospital.speciality}}</div>
+      </div>
+  </div>
+   <div ng-repeat="hospital in vm.hospitals" >
+            <div >
+                <div class="details" >
+                  <div class="inline"><h3>{{hospital.name}}</h3><div> {{hospital.speciality}}</div></div>
+                </div>
+            </div>
+  </div>
+</section>

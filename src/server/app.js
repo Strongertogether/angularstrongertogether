@@ -23,6 +23,8 @@ require('./routes.js')(app);
 //app.use('/api', require('./routes'));
 
 require('./specialists/specialists.router.js')(app);
+require('./hospitals/hospitals.router.js')(app);
+
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
