@@ -1,4 +1,4 @@
-# Mortgage_calculator
+# StrongerTogether
 
 **Generated from HotTowel Angular**
 
