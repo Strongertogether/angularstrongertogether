@@ -6,6 +6,7 @@
     'app.widgets',
     'app.main',
     'app.contact',
+    'app.hospitals',
     'app.layout',
     'app.specialists'
   ]);
