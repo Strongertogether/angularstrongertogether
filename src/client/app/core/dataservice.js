@@ -9,8 +9,8 @@
   /* @ngInject */
   function dataservice($http, $q, exception, logger) {
     var service = {
-      sendemail: sendemail
-      //getSpecialists: getSpecialists
+      sendemail: sendemail,
+      getSpecialists: getSpecialists
     };
 
     return service;
