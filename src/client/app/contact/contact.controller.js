@@ -5,9 +5,9 @@
     .module('app.contact')
     .controller('ContactController', ContactController);
 
-    ContactController.$inject = ['$q', 'dataservice', 'logger'];
+    ContactController.$inject = ['$q', 'dataservice'];
   /* @ngInject */
-  function ContactController($q, dataservice, logger) {
+  function ContactController($q, dataservice) {
     var vm = this;
 
     vm.title = 'Contact';
@@ -23,22 +23,33 @@
       var data = {
         name: vm.inputName,
         from: vm.inputEmail,
-        to: 'strongertogetherdaw@gmail.com',
+        to: '',
         subject: vm.inputSubject,
         text: vm.inputMessage,
+        type:'admin'
       };
 
       dataservice.sendemail(data).then(function(response) {
-        console.log("sendemail");
+
         if (response) {
-          vm.resultMessage = 'Su email ha sido enviado correctamente';
-          vm.inputName = '';
-          vm.inputEmail = '';
-          vm.inputSubject = '';
-          vm.inputMessage = '';
+            data.type='user';
+            console.log(data);
+            dataservice.sendemail(data).then(function (response) {
+
+                if (response) {
+                    vm.resultMessageOk = 'Su email ha sido enviado correctamente';
+                    vm.inputName = '';
+                    vm.inputEmail = '';
+                    vm.inputSubject = '';
+                    vm.inputMessage = '';
+                } else {
+                    vm.resultMessageFail =
+                            'Ha habido un error al enviar el email, intentelo mas tarde';
+                }
+            });
         } else {
-          vm.resultMessage =
-            'Ha habido un error al enviar el email, intentelo mas tarde';
+            vm.resultMessageFail =
+                    'Ha habido un error al enviar el email, intentelo mas tarde';
         }
       });
 

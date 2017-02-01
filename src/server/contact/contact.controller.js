@@ -2,22 +2,39 @@ var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 //var sg = require('sendgrid')(process.env.SECRET_KEY);
 
-console.log(process.env.SECRET_KEY);
-
 exports.sendmail = function(req,res) {
 
-console.log("controller contact server");
-      req.body.to = req.body.from;
-      var body = '<body>' +
-        '<div id="contact-email">' +
-        '<div> <h1>Contacto con strongertogether</h1> <h4>Sugerencia: ' + req.body.subject +
-        '</h4></div>' +
-        '<section>' +
-        'Nombre:<p>' + req.body.name + '</p>' +
-        'Email: <p>' + req.body.from + '</p>' +
-        'Mensaje:<p>' + req.body.text + '</p></section>' +
-        '</div>' +
-        ' </body>';
+switch (req.body.type) {
+
+  case 'user':
+  req.body.to = req.body.from;
+  var body = '<body>' +
+    '<div id="contact-email">' +
+    '<div> <h1>Contacto con strongertogether</h1> <h4>Sugerencia: ' + req.body.subject +
+    '</h4></div>' +
+    '<section>' +
+    'Nombre:<p>' + req.body.name + '</p>' +
+    'Email: <p>' + req.body.from + '</p>' +
+    'Mensaje:<p>' + req.body.text + '</p></section>' +
+    '</div>' +
+    ' </body>';
+  break;
+
+  case 'admin':
+  req.body.to = 'strongertogetherdaw@gmail.com';
+  var body = '<body>' +
+    '<div id="contact-email">' +
+    '<div> <h1>Contacto con strongertogether</h1> <h4>Sugerencia: ' + req.body.subject +
+    '</h4></div>' +
+    '<section>' +
+    'Nombre:<p>' + req.body.name + '</p>' +
+    'Email: <p>' + req.body.from + '</p>' +
+    'Mensaje:<p>' + req.body.text + '</p></section>' +
+    '</div>' +
+    ' </body>';
+  break;
+}
+
 
   var template =
     '<html>' +
