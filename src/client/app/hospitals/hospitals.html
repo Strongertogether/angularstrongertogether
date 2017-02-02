@@ -1,15 +1,16 @@
+<!--
 <section id="main" class="wrapper">
   Search Hospitals: <input type="text" class="filtre" ng-model="filtro" ><hr>
-<!--   <div class="col-md-6"> -->
+
       <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
 
-      <ui-gmap-marker coords="vm.markers" idkey="vm.id">
+        <ui-gmap-markers models="testMarkers" coords="'self'" icon="'icon'">
 
       </ui-gmap-google-map>
-<!--  </div> -->
+
   <div class="of"  ng-repeat="hospital in vm.filteredHospitals| filter:{name:filtro}" id="{{hospital.id}}">
       <div>
-          <div class="desc">{{hospital.name}} {{hospital.speciality}}</div>
+          <div class="desc">{{hospital.name}}</div>
       </div>
   </div>
    <div ng-repeat="hospital in vm.hospitals" >
@@ -19,4 +20,38 @@
                 </div>
             </div>
   </div>
+</section>
+-->
+
+<!--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>-->
+<section id="main" class="wrapper">
+    <div class="container">
+
+        <header class="major">
+            <h2 class="hospital_title">Hospitals</h2>
+            <!-- <p class="hospital_content">Available hospitals near you<br> </p> -->
+            <p class="gm-style-iw">   Search Hospitals: <input type="text" class="filtre" ng-model="filtro" ><hr></p>
+        </header>
+
+        <div class="image fit">
+            <div id='ubicacion'></div>
+            <!-- Se escribe un mapa con la localizacion anterior-->
+            <div id="demo"></div>
+            <div id="mapholder">
+              <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+
+                <ui-gmap-markers models="testMarkers" coords="'self'" icon="'icon'">
+
+              </ui-gmap-google-map>
+            </div>
+            <div class="hospitals">
+              <div class="of"  ng-repeat="hospital in vm.filteredHospitals| filter:{name:filtro}" id="{{hospital.id}}">
+                  <div>
+                      <div class="desc">{{hospital.name}}</div>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
 </section>

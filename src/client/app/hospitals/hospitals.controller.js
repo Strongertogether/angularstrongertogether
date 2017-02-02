@@ -13,7 +13,7 @@
         vm.title = 'Hospitals';
         vm.hospitals= [];
         vm.filteredHospitals = [];
-        vm.numPerPage = 5;
+        vm.numPerPage = 20;
         vm.maxSize = 5;
         vm.currentPage = 1;
         vm.markers = [];
@@ -22,7 +22,7 @@
         // var watcher = vm.watch('./technicians.html');
         // watcher.on('change', update);
 
-        vm.map = { center: { latitude: 38.8101561, longitude: -0.6043774 }, zoom: 10 };
+        vm.map = { center: { latitude: 39.1389498, longitude: -0.6615438 }, zoom: 9 };
 
         activate();
 
@@ -52,20 +52,16 @@
             var latitude = hospitals[i].latitude;
             var longitude = hospitals[i].longitude;
 
-            vm.Marker = {
-              coords: {
-                  latitude:latitude,
-                  longitude:longitude
-                },
-              id:i
-            }
-
+            vm.Marker = { latitude:latitude, longitude:longitude, id:i }
             vm.markers.push(vm.Marker);
 
+            //console.log(vm.markers);
           }
 
         }
+        $scope.testMarkers = vm.markers;
 
+        console.log($scope.testMarkers);
 
         /*
                     vm.Marker = {
