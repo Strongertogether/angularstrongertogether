@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `strongertogether` /*!40100 DEFAULT CHARACTER SET
 USE `strongertogether`;
 -- MySQL dump 10.13  Distrib 5.5.52, for debian-linux-gnu (x86_64)
 --
--- Host: 92.222.94.202    Database: strongertogether
+-- Host: 127.0.0.1    Database: strongertogether
 -- ------------------------------------------------------
--- Server version	5.5.52-0+deb8u1
+-- Server version	5.6.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -43,7 +43,7 @@ CREATE TABLE `hospitals` (
 
 LOCK TABLES `hospitals` WRITE;
 /*!40000 ALTER TABLE `hospitals` DISABLE KEYS */;
-INSERT INTO `hospitals` VALUES (1,'Hospital General de Ontinyent','ninguna','Ontinyent','Spain','Hospital de ontinyent','38.8202367','-0.6041065');
+INSERT INTO `hospitals` VALUES (1,'Hospital Antiguo Hospital Mili','','','','','38.8202367','-0.4264736'),(2,'Hospital Arnau de Vilanova','','','','','39.4904147','-0.4058221'),(3,'Hospital Clínico Universitario','','','','','39.4788801','-0.3634141'),(4,'Hospital Consorcio Hospital Gª','','','','','39.46822','-0.412154'),(5,'Hospital Doctor Moliner','','','','','39.6561685','-0.4763146'),(6,'Hospital Doctor Peset','','','','','39.4524937','-0.395889'),(7,'Hospital Gandia \"Francesc de B','','','','','38.9634424','-0.1717632'),(8,'Hospital General d\'Ontinyent','','','','','38.8202605','-0.6052335'),(9,'Hospital La Malvarrosa','','','','','39.4752721','-0.3275614'),(10,'Hospital La Ribera de Alzira','','','','','39.1601816','-0.4189617'),(11,'Hospital L\'Horta Manises','','','','','39.4858953','-0.4544896'),(12,'Hospital Pare Jofré','','','','','39.4534327','-0.396124'),(13,'Hospital Requena','','','','','39.4879285','-1.0927107'),(14,'Hospital Sagunto','','','','','39.6743614','-0.2334218'),(15,'Hospital Universitari i Politè','','','','','39.4433313','-0.3776066'),(16,'Hospital Universitario La Fe','','','','','39.4433313','-0.3776066'),(17,'Hospital Xàtiva \"Lluís Alcanyí','','','','','39.0066209','-0.5119719');
 /*!40000 ALTER TABLE `hospitals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-25 17:29:31
+-- Dump completed on 2017-02-02 18:42:53

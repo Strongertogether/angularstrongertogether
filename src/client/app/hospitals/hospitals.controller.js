@@ -5,10 +5,10 @@
         .module('app.hospitals')
         .controller('hospitalsController', hospitalsController);
 
-    hospitalsController.$inject = ['$q','dataservice','logger','$scope'];
+    hospitalsController.$inject = ['$q','dataservice','logger','$scope', '$uibModal'];
 
     /* @ngInject */
-    function hospitalsController($q, dataservice, logger, $scope) {
+    function hospitalsController($q, dataservice, logger, $scope, $uibModal) {
         var vm = this;
         vm.title = 'Hospitals';
         vm.hospitals= [];
@@ -17,6 +17,7 @@
         vm.maxSize = 5;
         vm.currentPage = 1;
         vm.markers = [];
+        vm.infoMarker = infoMarker;
 
         $scope.$watch(update);
         // var watcher = vm.watch('./technicians.html');
@@ -55,56 +56,30 @@
             vm.Marker = { latitude:latitude, longitude:longitude, id:i }
             vm.markers.push(vm.Marker);
 
-            //console.log(vm.markers);
           }
 
         }
         $scope.testMarkers = vm.markers;
 
-        console.log($scope.testMarkers);
+/*
+ *  infoMarker
+ */
 
-        /*
-                    vm.Marker = {
-                      coords: {
-                          latitude:latitude,
-                          longitude:longitude
-                        },
-                      id:i
-                    }
+          function infoMarker(index){
+            console.log(vm.hospitals[index]);
+            //vm.selectedHospital = vm.hospitals;
+            var selectedHospital = vm.hospitals[index];
+            console.log($scope.selectedHospital);
+            var modalInstance = $uibModal.open({
+              animation: 'true',
+              templateUrl: 'app/hospitals/infoHospitals.html',
+              controller: 'hospitalsController',
+              controllerAs: 'vm',
+              scope: scope,
+              size: "lg"
+            });
 
-                    vm.markers.push(vm.Marker);
-          */
-
-
-        /*
-         * Test marker google maps
-         *
-
-            $scope.marker = {
-              id: 0,
-
-              latitude: 38.8101561,
-              longitude: -0.6043774
-
-              options: { draggable: true },
-              events: {
-                dragend: function (marker, eventName, args) {
-                  $log.log('marker dragend');
-                  var lat = marker.getPosition().lat();
-                  var lon = marker.getPosition().lng();
-                  $log.log(lat);
-                  $log.log(lon);
-
-                  $scope.marker.options = {
-                    draggable: true,
-                    labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-                    labelAnchor: "100 0",
-                    labelClass: "marker-labels"
-                  };
-                }
-              }
-            };
-*/
+          };
 
     }
 })();
