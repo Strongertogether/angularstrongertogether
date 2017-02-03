@@ -22,7 +22,6 @@
               <div class="of" ng-repeat="hospital in vm.filteredHospitals| filter:{name:filtro}" id="{{hospital.id}}">
                   <div>
                       <div ng-click="vm.infoMarker($index)" class="desc">{{hospital.name}}</div>
-                      <div> {{$index}} </div>
                   </div>
               </div>
             </div>

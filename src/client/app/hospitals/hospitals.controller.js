@@ -66,16 +66,17 @@
  */
 
           function infoMarker(index){
-            console.log(vm.hospitals[index]);
-            //vm.selectedHospital = vm.hospitals;
-            var selectedHospital = vm.hospitals[index];
-            console.log($scope.selectedHospital);
+            //console.log(vm.hospitals[index]);
+            $scope.selectedHospital = vm.hospitals[index];
+            //var selectedHospital = vm.hospitals[index];
+            //console.log($scope.selectedHospital);
+            console.log(vm.selectedHospital);
             var modalInstance = $uibModal.open({
               animation: 'true',
               templateUrl: 'app/hospitals/infoHospitals.html',
               controller: 'hospitalsController',
               controllerAs: 'vm',
-              scope: scope,
+              scope: $scope,
               size: "lg"
             });
 
