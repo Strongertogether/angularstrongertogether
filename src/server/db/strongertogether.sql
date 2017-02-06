@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `hospitals`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `hospitals` (
   `id` int(20) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `specialty` varchar(45) NOT NULL,
   `city` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `hospitals` (
 
 LOCK TABLES `hospitals` WRITE;
 /*!40000 ALTER TABLE `hospitals` DISABLE KEYS */;
-INSERT INTO `hospitals` VALUES (1,'Hospital Antiguo Hospital Mili','','','','','38.8202367','-0.4264736'),(2,'Hospital Arnau de Vilanova','','','','','39.4904147','-0.4058221'),(3,'Hospital Clínico Universitario','','','','','39.4788801','-0.3634141'),(4,'Hospital Consorcio Hospital Gª','','','','','39.46822','-0.412154'),(5,'Hospital Doctor Moliner','','','','','39.6561685','-0.4763146'),(6,'Hospital Doctor Peset','','','','','39.4524937','-0.395889'),(7,'Hospital Gandia \"Francesc de B','','','','','38.9634424','-0.1717632'),(8,'Hospital General d\'Ontinyent','','','','','38.8202605','-0.6052335'),(9,'Hospital La Malvarrosa','','','','','39.4752721','-0.3275614'),(10,'Hospital La Ribera de Alzira','','','','','39.1601816','-0.4189617'),(11,'Hospital L\'Horta Manises','','','','','39.4858953','-0.4544896'),(12,'Hospital Pare Jofré','','','','','39.4534327','-0.396124'),(13,'Hospital Requena','','','','','39.4879285','-1.0927107'),(14,'Hospital Sagunto','','','','','39.6743614','-0.2334218'),(15,'Hospital Universitari i Politè','','','','','39.4433313','-0.3776066'),(16,'Hospital Universitario La Fe','','','','','39.4433313','-0.3776066'),(17,'Hospital Xàtiva \"Lluís Alcanyí','','','','','39.0066209','-0.5119719');
+INSERT INTO `hospitals` VALUES (1,'Hospital Antiguo Hospital Militar de Valencia','','C/ Dolores Ibárruri, 3 (Mislata-46920)','','src/client/images/hospitals/hospital1.jpg','38.8202367','-0.4264736'),(2,'Hospital Arnau de Vilanova','','C/ San Clemente, 12 (Valencia-46015)','','','39.4904147','-0.4058221'),(3,'Hospital Clínico Universitario','','Av Blasco Ibañez, 17 (Valencia-46010)','','','39.4788801','-0.3634141'),(4,'Hospital Consorcio Hospital Gª Universitario','','Av. Tres Cruces, s/n (Valencia-46014)','','','39.46822','-0.412154'),(5,'Hospital Doctor Moliner','','C/ Portaceli, s/n (Serra-46118)','','','39.6561685','-0.4763146'),(6,'Hospital Doctor Peset','','Av. Gaspar Aguilar, 90 (Valencia-46017)','','','39.4524937','-0.395889'),(7,'Hospital Gandia \"Francesc de Borja\"','','Paseo Germanías, 71 (Gandia-46702)','','','38.9634424','-0.1717632'),(8,'Hospital General d\'Ontinyent','',' C/ Francisco Cerdá, 3 (Ontinyent-46870)','','','38.8202605','-0.6052335'),(9,'Hospital La Malvarrosa','','C/ Isabel de Villena, 2 (Valencia-46011)','','','39.4752721','-0.3275614'),(10,'Hospital La Ribera de Alzira','','Ctra. Corbera, km 1 (Alzira-46600)','','','39.1601816','-0.4189617'),(11,'Hospital L\'Horta Manises','','Av. Generalitat Valenciana, 50 (Manises-46940)','','','39.4858953','-0.4544896'),(12,'Hospital Pare Jofré','','C/ San Lázaro, s/n (Valencia-46017)','','','39.4534327','-0.396124'),(13,'Hospital Requena','','Paraje Casablanca, s/n (Requena-46340)','','','39.4879285','-1.0927107'),(14,'Hospital Sagunto','','Av. Ramón y Cajal,s/n (Sagunt/Sagunto-46520)','','','39.6743614','-0.2334218'),(15,'Hospital Universitari i Politècnic La Fe','','Bulevar Sur, s/n (Valencia-46026)','','','39.4433313','-0.3776066'),(16,'Hospital Universitario La Fe','','Av. Campanar, 21 (Valencia-46009)','','','39.4433313','-0.3776066'),(17,'Hospital Xàtiva \"Lluís Alcanyís\"','','','','','39.0066209','-0.5119719');
 /*!40000 ALTER TABLE `hospitals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,4 +132,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02 18:42:53
+-- Dump completed on 2017-02-06 20:35:32
