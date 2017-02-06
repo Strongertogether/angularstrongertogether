@@ -48,29 +48,18 @@
         }
 
        function getMarkers(hospitals) {
-
           for (var i = 0; i < hospitals.length; i++) {
             var latitude = hospitals[i].latitude;
             var longitude = hospitals[i].longitude;
 
             vm.Marker = { latitude:latitude, longitude:longitude, id:i }
             vm.markers.push(vm.Marker);
-
           }
-
+          $scope.testMarkers = vm.markers;
         }
-        $scope.testMarkers = vm.markers;
 
-/*
- *  infoMarker
- */
-
-          function infoMarker(index){
-            //console.log(vm.hospitals[index]);
+         function infoMarker(index){
             $scope.selectedHospital = vm.hospitals[index];
-            //var selectedHospital = vm.hospitals[index];
-            //console.log($scope.selectedHospital);
-            console.log(vm.selectedHospital);
             var modalInstance = $uibModal.open({
               animation: 'true',
               templateUrl: 'app/hospitals/infoHospitals.html',
@@ -81,6 +70,8 @@
             });
 
           };
+
+
 
     }
 })();
