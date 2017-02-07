@@ -5,12 +5,14 @@
     .module('app.layout')
     .controller('SidebarController', SidebarController);
 
-  SidebarController.$inject = ['$state', 'routerHelper'];
+  SidebarController.$inject = ['$state', 'routerHelper', '$uibModal'];
   /* @ngInject */
-  function SidebarController($state, routerHelper) {
+  function SidebarController($state, routerHelper, $uibModal) {
     var vm = this;
     var states = routerHelper.getStates();
     vm.isCurrent = isCurrent;
+    vm.openModal = openModal;
+    vm.openSignUp = openSignUp;
 
     activate();
 
@@ -31,5 +33,27 @@
       var menuName = route.title;
       return $state.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
     }
+
+    //funcion para abrir el modal signin
+    function openModal(){
+      var modalInstance = $uibModal.open({
+      animation: 'true',
+      templateUrl: 'app/users/login.view.html',
+      controller: 'modalController',
+      size: ""
+      });
+    }
+
+    //funcion para abrir el modal signup
+    function openSignUp(){
+      var modalInstance = $uibModal.open({
+      animation: 'true',
+      templateUrl: 'app/users/sign_up.view.html',
+      controller: 'modalController',
+      size: ""
+      });
+    }
+
+
   }
 })();

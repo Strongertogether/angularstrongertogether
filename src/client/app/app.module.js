@@ -8,7 +8,8 @@
     'app.contact',
     'app.hospitals',
     'app.layout',
-    'app.specialists'
+    'app.specialists',
+    'app.users'
   ]);
 
 })();

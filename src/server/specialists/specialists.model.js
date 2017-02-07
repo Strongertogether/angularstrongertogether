@@ -1,13 +1,4 @@
-//var mysql = require('../config.db');
-
-var mysql = require('mysql'),
-connection = mysql.createConnection({
-        host: '127.0.0.1',
-        user: 'root',
-        password: '123qwe',
-        database: 'strongertogether'
-    }
-);
+var mysql = require ('../config/database');
 
 var specialistsModel = {};
 
