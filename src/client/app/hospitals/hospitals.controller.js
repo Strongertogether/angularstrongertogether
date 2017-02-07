@@ -37,6 +37,7 @@
         function getHospitals(){
           return dataservice.getHospitals().then(function (data) {
             vm.hospitals = data;
+            console.log(vm.hospitals);
             getMarkers(vm.hospitals);
             return vm.hospitals;
           });
@@ -58,8 +59,9 @@
           $scope.testMarkers = vm.markers;
         }
 
-         function infoMarker(index){
-            $scope.selectedHospital = vm.hospitals[index];
+         function infoMarker(id){
+
+            $scope.selectedHospital = vm.hospitals[id];
             var modalInstance = $uibModal.open({
               animation: 'true',
               templateUrl: 'app/hospitals/infoHospitals.html',
