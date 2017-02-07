@@ -20,7 +20,7 @@
           templateUrl: 'app/main/main.html',
           controller: 'MainController',
           controllerAs: 'vm',
-          title: 'main',
+          title: 'Home',
           settings: {
             nav: 1,
             content: '<i class="fa fa-dashboard"></i> Home'

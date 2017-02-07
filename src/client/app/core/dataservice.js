@@ -11,7 +11,8 @@
     var service = {
       sendemail: sendemail,
       getSpecialists: getSpecialists,
-      getHospitals: getHospitals
+      getHospitals: getHospitals,
+      signUp: signUp
     };
 
     return service;
@@ -32,6 +33,22 @@
         return false;
       }
     }
+
+    function signUp(data){
+      console.log(data);
+      return $http.post('/api/signup', data)
+           .then(success)
+           .catch(fail);
+
+      function success() {
+        return true;
+      }
+
+      function fail() {
+        return false;
+      }
+    }
+
     function getSpecialists() {
          return $http.get('/api/specialists')
            .then(success)
