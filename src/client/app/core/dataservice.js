@@ -35,6 +35,7 @@
     }
 
     function signUp(data){
+      console.log("dataservice: "+ data);
       console.log(data);
       return $http.post('/api/signup', data)
            .then(success)

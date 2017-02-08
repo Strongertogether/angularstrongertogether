@@ -4,8 +4,8 @@ var mysql = require ('../config/database');
 var hospitalsModel= {};
 
 hospitalsModel.getHospitals = function (callback){
-  if (connection) {
-        connection.query('SELECT * FROM hospitals ORDER BY id', function(error, rows) {
+  if (mysql.connection) {
+        mysql.connection.query('SELECT * FROM hospitals ORDER BY id', function(error, rows) {
             if(error){
                 throw error;
             }else{

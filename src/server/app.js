@@ -14,6 +14,7 @@ var four0four = require('./utils/404')();
 var cookieParser = require('cookie-parser');
 
 var environment = process.env.NODE_ENV;
+app.use(cookieParser());
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,21 +22,20 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // required for passport
+require('./config/passport.js')(passport);
 app.use(session({
-	secret: 'estovaonova',
-	resave: true,
-	saveUninitialized: true
+	secret: 'estovaonova'
  } )); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 
 //require('./routes.js')(app);
-require('./config/passport.js')(passport);
+
 require('./contact/contact.router.js')(app);
 require('./specialists/specialists.router.js')(app);
 require('./hospitals/hospitals.router.js')(app);
-require('./users/users.router.js')(app,passport);
+require('./users/users.router.js')(app);
 
 
 console.log('About to crank up node');
