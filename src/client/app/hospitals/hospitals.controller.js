@@ -20,10 +20,29 @@
         vm.infoMarker = infoMarker;
 
         $scope.$watch(update);
-        // var watcher = vm.watch('./technicians.html');
-        // watcher.on('change', update);
 
-        vm.map = { center: { latitude: 39.1389498, longitude: -0.6615438 }, zoom: 9 };
+        vm.map = {
+                  center: { latitude: 39.1389498, longitude: -0.6615438 },
+                  zoom: 9,
+                  windows: {
+                    model: {},
+                    show: false,
+                    options:{
+                      pixelOffset: {width:-1,height:-20}
+                    }
+                  },
+                  markersEvents: {
+                    click: function(marker, eventName, model, args) {
+                      vm.map.windows.model = model;
+                      vm.map.windows.show = true;
+                      for (var i = 0; i < vm.hospitals.length; i++) {
+                        if (vm.hospitals[i].id === model.id) {
+                          vm.infoWindow = vm.hospitals[i];
+                        }
+                      }
+                    }
+                  }
+                };
 
         activate();
 
@@ -37,6 +56,7 @@
         function getHospitals(){
           return dataservice.getHospitals().then(function (data) {
             vm.hospitals = data;
+            console.log(vm.hospitals);
             getMarkers(vm.hospitals);
             return vm.hospitals;
           });
@@ -58,8 +78,8 @@
           $scope.testMarkers = vm.markers;
         }
 
-         function infoMarker(index){
-            $scope.selectedHospital = vm.hospitals[index];
+         function infoMarker(id){
+            $scope.selectedHospital = vm.hospitals[id];
             var modalInstance = $uibModal.open({
               animation: 'true',
               templateUrl: 'app/hospitals/infoHospitals.html',
@@ -68,7 +88,6 @@
               scope: $scope,
               size: "lg"
             });
-
           };
 
 

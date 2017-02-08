@@ -18,7 +18,7 @@ specialistsModel.getSpecialists = function (callback){
 }
 
 specialistsModel.getSpecialist = function(id,callback){
-    if (connection) {
+    if (mysql.connection) {
         var sql = 'SELECT * FROM specialists WHERE id = ' + mysql.connection.escape(id);
         mysql.connection.query(sql, function(error, row) {
             if(error){
