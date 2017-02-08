@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.contact')
+    .module('app.users')
     .run(appRun);
 
   appRun.$inject = ['routerHelper'];
@@ -14,17 +14,17 @@
   function getStates() {
     return [
       {
-        state: 'contact',
+        state: 'users',
         config: {
-          url: '/contact',
-          templateUrl: 'app/contact/contact.html',
-          controller: 'ContactController',
+          url: '/login',
+          templateUrl: 'app/users/login.view.html',
+          controller: 'LoginController',
           controllerAs: 'vm',
-          title: 'Contact',
-          settings: {
-            nav: 2,
-            content: '<i class="fa fa-lock"></i> Contact'
-          }
+          title: 'Login',
+          /*settings: {
+            nav: 5,
+            content: '<i class="fa fa-dashboard" ></i> Login'
+          }*/
         }
       }
     ];

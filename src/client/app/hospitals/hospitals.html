@@ -8,29 +8,23 @@
 
         <div class="image fit">
             <div id='ubicacion'></div>
-            <!-- Se escribe un mapa con la localizacion anterior-->
             <div id="demo"></div>
             <div id="mapholder">
-<!--
+
               <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
-                <ui-gmap-markers models="testMarkers" coords="'self'" icon="'icon'">
-                 <ui-gmap-windows show="show">
-                   <div ng-non-bindable>test {{selectedHospital.name}}</div>
-                 </ui-gmap-windows>
+
+                <ui-gmap-markers models="testMarkers" coords="'self'" icon="'icon'" events="vm.map.markersEvents">
+
+                     <ui-gmap-window show="vm.map.windows.show" coords= "vm.map.windows.model">
+                       <div class="HospitalsBoxInfo">
+                         <h4> Hospital Information </h4>
+                         <div>Name: {{vm.infoWindow.name}}</div>
+                         <div>Direction: {{vm.infoWindow.city}}</div>
+                       </div>
+                    </ui-gmap-window>
+
                 </ui-gmap-markers>
               </ui-gmap-google-map>
--->
-
-                <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
-                  <ui-gmap-markers models="testMarkers" coords="'self'" icon="'icon'" click="vm.getHospitals()">
-                   <ui-gmap-windows show="show">
-                     <div ng-non-bindable>Test {{vm.hospitals.name}}</div>
-                   </ui-gmap-windows>
-                  </ui-gmap-markers>
-                </ui-gmap-google-map>
-              
-
-
 
             </div>
             <div class="hospitals">

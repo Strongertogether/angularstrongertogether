@@ -1,0 +1,29 @@
+<button type="button" style="margin-right:10px;" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  				<div class="loginmodal-container">
+  					<h1>Sign Up</h1><br>
+  				  <form ng-controller="LoginController as vm" id="signup_form" name="signup_form">
+              <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail"
+                placeholder="Email"  maxlength="100"
+                ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
+                <p><span class="text-danger" ng-show="signup_form.inputEmail.$error.required && (signup_form.inputEmail.$dirty || signup_form.inputEmail.$touched)">El campo es obligatorio</span></p>
+                <p><span class="text-danger" ng-show="signup_form.inputEmail.$error.email">Email no valido</span></p>
+
+              <input ng-model="vm.inputPass" ng-pattern="/^.{6,12}$/" type="password" id="inputPass" name="inputPass" placeholder="Password" value="" required>
+                  <p><span class="text-danger" ng-show="signup_form.inputPass.$error.required && (signup_form.inputPass.$dirty || signup_form.inputPass.$touched)">El campo es obligatorio</span></p>
+                  <p><span class="text-danger" ng-show="signup_form.inputPass.$error.pattern">Password no válido</span></p>
+
+
+                <input ng-model="vm.inputPass2"  ng-pattern="/^.{6,12}$/" type="password" id="inputPass2" name="inputPass2" placeholder="Repeat Password" value="" required>
+                    <p><span class="text-danger" ng-show="signup_form.inputPass2.$error.required && (signup_form.inputPass2.$dirty || signup_form.inputPass2.$touched)">El campo es obligatorio</span></p>
+                    <p><span class="text-danger" data-ng-show="signup_form.inputPass.$valid && vm.inputPass !== vm.inputPass2"> Password do not match</span></p>
+
+              <input type="submit" id="submit_signup" name="submit_signup"
+              class="login loginmodal-submit" ng-disabled="signup_form.inputEmail.$invalid || signup_form.inputPass.$invalid || signup_form.inputPass2.$invalid || vm.inputPass != vm.inputPass2"
+              value="Sign Up" ng-click="vm.submitSignUp()">
+  				  </form>
+            <div ng-controller="SidebarController as vm" class="login-help">
+              <p>Ready Registered? <a ng-click="vm.openModal(); closeModal()" href="#">Sign In</a></p><br>
+            </div>
+  				</div>
