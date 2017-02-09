@@ -35,4 +35,20 @@ module.exports = function() {
       return model_users.signup(email, password, done);
 
   }));
+
+
+  ///LOCAL LOGIN
+  passport.use('local-login',new LocalStrategy({
+          // by default, local strategy uses username and password, we will override with email
+          usernameField : 'email',
+          passwordField : 'pass',
+          passReqToCallback : true // allows us to pass back the entire request to the callback
+      },
+
+      function(req, email, pass, done) { // callback with email and password from our form
+
+          return model_users.login(email, pass, done);
+
+      }));
+
 };
