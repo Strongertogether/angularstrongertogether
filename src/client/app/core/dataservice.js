@@ -12,7 +12,8 @@
       sendemail: sendemail,
       getSpecialists: getSpecialists,
       getHospitals: getHospitals,
-      signUp: signUp
+      signUp: signUp,
+      facebook: facebook
     };
 
     return service;
@@ -35,6 +36,7 @@
     }
 
     function signUp(data){
+      console.log("dataservice: "+ data);
       console.log(data);
       return $http.post('/api/signup', data)
            .then(success)
@@ -75,6 +77,22 @@
              return exception.catcher('XHR Failed for getHospitals')(e);
            }
        }
+
+       function facebook() {
+          return $http.get('/auth/success')
+                  .then(success)
+                  .catch(fail);
+
+          function success(response) {
+              console.log('entre a success');
+              return response;
+          }
+
+          function fail() {
+              console.log('entre a fail');
+              return false;
+          }
+      }
 
   }
 })();

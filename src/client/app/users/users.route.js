@@ -12,8 +12,8 @@
   }
 
   function getStates() {
-    return [
-      {
+    console.log("Entra getStates");
+    return [{
         state: 'users',
         config: {
           url: '/login',
@@ -26,7 +26,15 @@
             content: '<i class="fa fa-dashboard" ></i> Login'
           }*/
         }
+      },
+      {
+          state: 'facebook',
+          config: {
+            url: '/facebook',
+            controller: 'socialController'
+          }
       }
+
     ];
   }
 })();

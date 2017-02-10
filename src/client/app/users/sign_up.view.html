@@ -21,7 +21,7 @@
 
               <input type="submit" id="submit_signup" name="submit_signup"
               class="login loginmodal-submit" ng-disabled="signup_form.inputEmail.$invalid || signup_form.inputPass.$invalid || signup_form.inputPass2.$invalid || vm.inputPass != vm.inputPass2"
-              value="Sign Up" ng-click="vm.submitSignUp()">
+              value="Sign Up" ng-click="vm.submitSignUp(); closeModal()">
   				  </form>
             <div ng-controller="SidebarController as vm" class="login-help">
               <p>Ready Registered? <a ng-click="vm.openModal(); closeModal()" href="#">Sign In</a></p><br>

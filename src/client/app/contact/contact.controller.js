@@ -5,9 +5,9 @@
     .module('app.contact')
     .controller('ContactController', ContactController);
 
-    ContactController.$inject = ['$q', 'dataservice'];
+    ContactController.$inject = ['$q', 'dataservice','$state'];
   /* @ngInject */
-  function ContactController($q, dataservice) {
+  function ContactController($q, dataservice, $state) {
     var vm = this;
 
     vm.title = 'Contact';
@@ -42,6 +42,7 @@
                     vm.inputEmail = '';
                     vm.inputSubject = '';
                     vm.inputMessage = '';
+                    $state.go('main');
                 } else {
                     vm.resultMessageFail =
                             'Ha habido un error al enviar el email, intentelo mas tarde';
