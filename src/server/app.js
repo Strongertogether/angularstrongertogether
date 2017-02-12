@@ -27,6 +27,7 @@ app.use(cookieParser());
 
 // required for passport
 require('./config/passport.js')(passport);
+
 app.use(session({
 	resave: false,
 	saveUninitialized: false,
@@ -37,47 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(cors());                 //cal per a signin fb
 
-//require('./routes.js')(app);
-
-require('./contact/contact.router.js')(app);
-require('./specialists/specialists.router.js')(app);
-require('./hospitals/hospitals.router.js')(app);
-require('./users/users.router.js')(app);
-
-
-//////////// SIGNIN FB //////////////////
-
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-	 app.get('/auth/facebook/callback', passport.authenticate('facebook',
-	 { successRedirect: '/facebook', failureRedirect: '/' }));
-
-	 app.get('/auth/success', function(req, res) {
-         res.json(req.user);
-     });
-
-     app.get('/auth/failure', function(req, res) {
-         console.log('fail');
-         res.render('after-auth', { state: 'failure', user: null });
-     });
-
-		 app.get('/logout', function(req, res) {
-		  req.logOut();
-		  res.redirect('/');
-		  //res.send(200);
-		});
-/////////////// END SIGNIN FB ///////////////
-
-////////////// PROFILE //////////////
-		app.get('/api/loggedin', function loggedin(req, res){
-		  console.log('LOGGEDIN ' + JSON.stringify(req.user));
-		  console.log('session ' + JSON.stringify(req.session));
-		  console.log(req.isAuthenticated());
-
-		  res.send(req.isAuthenticated() ? req.user : '0');
-
-		});
-/////////// END PROFILE //////////////
+require('./config/routes.js').init(app);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);
