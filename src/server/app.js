@@ -7,6 +7,7 @@ var session  = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors'); //cal per a signin fb
+var cookieParser = require('cookie-parser');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var passport = require('passport');
@@ -21,6 +22,8 @@ app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
+app.use(cookieParser());
+
 
 // required for passport
 require('./config/passport.js')(passport);
@@ -43,15 +46,7 @@ require('./users/users.router.js')(app);
 
 
 //////////// SIGNIN FB //////////////////
-/*app.use(session({
-  resave: false,
-  saveUninitialized: false,
-  secret: 'strongertogether',
-	cookie: { secure: false }
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-*/
+
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 	 app.get('/auth/facebook/callback', passport.authenticate('facebook',
@@ -65,6 +60,12 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
          console.log('fail');
          res.render('after-auth', { state: 'failure', user: null });
      });
+
+		 app.get('/logout', function(req, res) {
+		  req.logOut();
+		  res.redirect('/');
+		  //res.send(200);
+		});
 /////////////// END SIGNIN FB ///////////////
 
 
