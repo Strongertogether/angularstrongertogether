@@ -6,6 +6,7 @@ var express = require('express');
 var session  = require('express-session');
 var app = express();
 var bodyParser = require('body-parser');
+var cors = require('cors'); //cal per a signin fb
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var passport = require('passport');
@@ -14,6 +15,7 @@ var four0four = require('./utils/404')();
 var cookieParser = require('cookie-parser');
 
 var environment = process.env.NODE_ENV;
+app.use(cookieParser());
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,21 +23,45 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 
 // required for passport
+require('./config/passport.js')(passport);
 app.use(session({
-	secret: 'estovaonova',
-	resave: true,
-	saveUninitialized: true
+	secret: 'estovaonova'
  } )); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-
+app.use(cors());                 //cal per a signin fb
 
 //require('./routes.js')(app);
-require('./config/passport.js')(passport);
+
 require('./contact/contact.router.js')(app);
 require('./specialists/specialists.router.js')(app);
 require('./hospitals/hospitals.router.js')(app);
-require('./users/users.router.js')(app,passport);
+require('./users/users.router.js')(app);
+
+
+//////////// SIGNIN FB //////////////////
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: 'strongertogether',
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+	 app.get('/auth/facebook/callback', passport.authenticate('facebook',
+	 { successRedirect: '/facebook', failureRedirect: '/' }));
+
+	 app.get('/auth/success', function(req, res) {
+         res.json(req.user);
+     });
+
+     app.get('/auth/failure', function(req, res) {
+         console.log('fail');
+         res.render('after-auth', { state: 'failure', user: null });
+     });
+/////////////// END SIGNIN FB ///////////////
 
 
 console.log('About to crank up node');

@@ -1,5 +1,5 @@
-var bcrypt   = require('bcrypt-nodejs');
-
+var bcrypt = require('bcrypt-nodejs');
+console.log("hola passwrd.js");
 module.exports.generateHash = generateHash;
 module.exports.validPassword = validPassword;
 
