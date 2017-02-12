@@ -1,5 +1,5 @@
 var mysql = require ('../config/database');
-//var password = require ('../utils/password');
+var bcrypt = require('bcrypt-nodejs');
 
 var model_users = {};
 
@@ -13,8 +13,7 @@ model_users.signup = function(email, pass1, done){
           if (err)
             return done(err);
             if(rows.length){
-
-              return done(null, false, false);
+              return done(null, false, 'El usuario ya existe');
             }else {
               //create the user
               var newUserMysql = new Object();
@@ -34,6 +33,7 @@ model_users.signup = function(email, pass1, done){
     }
 }
 
+//local login
 
 model_users.getUser = function (id, callback) {
     if (mysql.connection) {
@@ -47,6 +47,32 @@ model_users.getUser = function (id, callback) {
         });
     }
 };
+
+model_users.login = function(email, pass, done){
+console.log("login model");
+  if (mysql.connection) {
+    mysql.connection.query("select * from users where email = '"+email+"'",function(err, rows){
+
+      if (err)
+            return done(err);
+
+            // if no user is found, return the message
+            if (!rows.length){
+              console.log("usuario no encontrado");
+                return done(null, false, "Usuario no encontrado");
+              }
+
+                if (!bcrypt.compareSync(pass, rows[0].password)){
+                    return done(null, false, "El password utilizado no es valido");
+                    console.log("no login");
+                      // all is well, return user
+                    }else{
+                      return done(null, rows[0], "Welcom again to Strongertogether");
+                      console.log("welcome");
+                      }
+  });
+};
+  }
 
 model_users.countUser = function (id, callback) {
 

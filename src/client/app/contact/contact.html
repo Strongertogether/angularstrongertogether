@@ -1,6 +1,4 @@
 <!--banner-starts-->
-	<script src="src/client/app/contact/lib/bootstrap-button.js"></script>
-	<link href="src/client/app/contact/css/bootstrap.min.css" rel="stylesheet">
 	<link href="src/client/app/contact/css/custom.css" rel="stylesheet">
 	<!--banner-end-->
 <!--contact-->
@@ -31,16 +29,16 @@
 			<div class="contact-bottom">
 			    <form id="contact_form" name="contact_form"><br>
 
-			        <div class="control-group">
+			        <div>
 									<input required ng-model="vm.inputName" type="text" id="inputName" name="inputName" placeholder="Name *"  dir="auto" maxlength="100">
-									<span class="text-danger" ng-show="contact_form.inputName.$error.required && (contact_form.inputName.$dirty || contact_form.inputName.$touched)">El campo es obligatorio</span>
-							</div>
-			        <div class="control-group">
+									<span class="text-danger2" ng-show="contact_form.inputName.$error.required && (contact_form.inputName.$dirty || contact_form.inputName.$touched)">El campo es obligatorio</span>
+							</div><br>
+			        <div>
 									<input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail" placeholder="Email *" maxlength="100" ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
-            			<span class="text-danger" ng-show="contact_form.inputEmail.$error.required && (contact_form.inputEmail.$dirty || contact_form.inputEmail.$touched)">El campo es obligatorio</span>
-            			<span class="text-danger" ng-show="contact_form.inputEmail.$error.email">Email no valido</span>
-							</div>
-			        <div class="control-group">
+            			<span class="text-danger2" ng-show="contact_form.inputEmail.$error.required && (contact_form.inputEmail.$dirty || contact_form.inputEmail.$touched)">El campo es obligatorio</span>
+            			<span class="text-danger2" ng-show="contact_form.inputEmail.$error.email">Email no valido</span>
+							</div><br>
+			        <div>
 			            <label for="sel1">Subject</label>
 			            <select ng-model="vm.inputSubject" class="form-control" id="inputSubject" name="inputSubject" title="Choose subject">
 			                <option value="compra">Info relativa a tu compra</option>
@@ -54,11 +52,11 @@
 			                <option value="festivos">Apertura de festivos</option>
 			                <option value="novedades">Te avisamos de nuestras novedades</option>
 			                <option value="diferente">Algo diferente</option>
-			            </select>
+			            </select><br>
 			        </div>
-			        <div class="control-group">
+			        <div>
 										<textarea required ng-model="vm.inputMessage" rows="4" id="inputMessage" name="inputMessage" placeholder="Introduzca aqui su mensaje *" style="max-width: 100%;" dir="auto"></textarea>
-            <span class="text-danger" ng-show="contact_form.inputMessage.$error.required && (contact_form.inputMessage.$dirty || contact_form.inputMessage.$touched)">El campo es obligatorio</span>
+            <span class="text-danger2" ng-show="contact_form.inputMessage.$error.required && (contact_form.inputMessage.$dirty || contact_form.inputMessage.$touched)">El campo es obligatorio</span>
 							</div>
 
 			        <input type="hidden" name="token" value="contact_form" />

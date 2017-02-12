@@ -13,7 +13,8 @@
       getSpecialists: getSpecialists,
       getHospitals: getHospitals,
       signUp: signUp,
-      facebook: facebook
+      facebook: facebook,
+      login: login
     };
 
     return service;
@@ -42,8 +43,24 @@
            .then(success)
            .catch(fail);
 
-      function success() {
-        return true;
+      function success(response) {
+        return response;
+      }
+
+      function fail() {
+        return false;
+      }
+    }
+
+    function login(data){
+      console.log("dataservice login: "+ data);
+      console.log(data);
+      return $http.post('/api/login', data)
+           .then(success)
+           .catch(fail);
+
+      function success(response) {
+        return response;
       }
 
       function fail() {
