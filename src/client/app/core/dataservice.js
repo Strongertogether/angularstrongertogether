@@ -5,16 +5,17 @@
     .module('app.core')
     .factory('dataservice', dataservice);
 
-  dataservice.$inject = ['$http', '$q', 'exception', 'logger', '$rootScope'];
+  dataservice.$inject = ['$http', '$q', 'exception', 'logger', '$rootScope', '$state'];
   /* @ngInject */
-  function dataservice($http, $q, exception, logger, $rootScope) {
+  function dataservice($http, $q, exception, logger, $rootScope, $state) {
     var service = {
       sendemail: sendemail,
       getSpecialists: getSpecialists,
       getHospitals: getHospitals,
       signUp: signUp,
       facebook: facebook,
-      login: login
+      login: login,
+      checkLoggedin: checkLoggedin
     };
 
     return service;
@@ -60,10 +61,12 @@
            .catch(fail);
 
       function success(response) {
+        $rootScope.authUser = response.data;
         return response;
       }
 
       function fail() {
+        $rootScope.authUser = false;
         return false;
       }
     }
@@ -111,6 +114,47 @@
               $rootScope.authUser = false;
               return false;
           }
+      }
+
+
+      function checkLoggedin() {
+
+        return $http.get('/api/loggedin')
+          .then(success)
+          .catch(fail);
+
+        function success(responseUser) {
+          if (responseUser.data === '0') {
+            $rootScope.authUser = false;
+            $state.go('users');
+          }else {
+            $rootScope.authUser = responseUser.data;
+          }
+        }
+
+        function fail(e) {
+          return exception.catcher('XHR Failed for /api/loggedin')(e);
+        }
+      }
+
+      function isLoggedin() {
+        return $http.get('/api/loggedin')
+          .then(success)
+          .catch(fail);
+
+        function success(responseUser) {
+          if (responseUser.data === '0') {
+            $rootScope.authUser = false;
+            return false;
+          }else {
+            $rootScope.authUser = responseUser.data;
+            return responseUser.data;
+          }
+        }
+
+        function fail(e) {
+          return exception.catcher('XHR Failed for /api/loggedin')(e);
+        }
       }
 
   }

@@ -68,6 +68,16 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 		});
 /////////////// END SIGNIN FB ///////////////
 
+////////////// PROFILE //////////////
+		app.get('/api/loggedin', function loggedin(req, res){
+		  console.log('LOGGEDIN ' + JSON.stringify(req.user));
+		  console.log('session ' + JSON.stringify(req.session));
+		  console.log(req.isAuthenticated());
+
+		  res.send(req.isAuthenticated() ? req.user : '0');
+
+		});
+/////////// END PROFILE //////////////
 
 console.log('About to crank up node');
 console.log('PORT=' + port);

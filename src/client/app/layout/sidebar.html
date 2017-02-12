@@ -11,11 +11,11 @@
         <li class="nlightblue fade-selection-animation"><a href="" ng-click="vm.openModal()">Login</a></li>
 
         <!-- User auth info -->
+<!--
         <li id="userAuthInfo" ng-show="$root.authUser">
-            <!-- <a>Welcome <img src="{{vm.authUser.user.photoURL}}" /> {{ vm.authData.name}}</a> -->
-            <a><img src="{{$root.authUser.photos[0].value}}" /> Welcome  {{ $root.authUser.name}}</a>
+            <a target="_self" href="http://localhost:3000/api/loggedin"><img src="{{$root.authUser.photos[0].value}}" /> Welcome  {{ $root.authUser.name}}</a>
         </li>
-
+-->
         <li id="logoutButton" ng-show="$root.authUser">
             <a target="_self" href="http://localhost:3000/logout"><span class="fa fa-sign-out"></span>Logout</a>
         </li>
