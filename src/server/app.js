@@ -25,7 +25,10 @@ app.use(logger('dev'));
 // required for passport
 require('./config/passport.js')(passport);
 app.use(session({
-	secret: 'estovaonova'
+	resave: false,
+	saveUninitialized: false,
+	secret: 'strongertogether',
+	cookie: { secure: false }
  } )); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -40,14 +43,15 @@ require('./users/users.router.js')(app);
 
 
 //////////// SIGNIN FB //////////////////
-app.use(session({
+/*app.use(session({
   resave: false,
   saveUninitialized: false,
   secret: 'strongertogether',
+	cookie: { secure: false }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+*/
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 	 app.get('/auth/facebook/callback', passport.authenticate('facebook',
