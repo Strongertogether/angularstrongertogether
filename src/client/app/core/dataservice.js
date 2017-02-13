@@ -5,15 +5,17 @@
     .module('app.core')
     .factory('dataservice', dataservice);
 
-  dataservice.$inject = ['$http', '$q', 'exception', 'logger'];
+  dataservice.$inject = ['$http', '$q', 'exception', 'logger', '$rootScope'];
   /* @ngInject */
-  function dataservice($http, $q, exception, logger) {
+  function dataservice($http, $q, exception, logger, $rootScope) {
     var service = {
       sendemail: sendemail,
       getSpecialists: getSpecialists,
       getHospitals: getHospitals,
       signUp: signUp,
-      login: login
+      facebook: facebook,
+      login: login,
+      twitter:twitter
     };
 
     return service;
@@ -93,6 +95,42 @@
              return exception.catcher('XHR Failed for getHospitals')(e);
            }
        }
+
+       function facebook() {
+          return $http.get('/auth/success')
+                  .then(success)
+                  .catch(fail);
+
+          function success(response) {
+              console.log('entre a success ');
+              $rootScope.authUser = response.data;
+              return response;
+          }
+
+          function fail() {
+              console.log('entre a fail');
+              $rootScope.authUser = false;
+              return false;
+          }
+      }
+
+      function twitter() {
+         return $http.get('/auth/success')
+                 .then(success)
+                 .catch(fail);
+
+         function success(response) {
+             console.log('entre a success ');
+             $rootScope.authUser = response.data;
+             return response;
+         }
+
+         function fail() {
+             console.log('entre a fail');
+             $rootScope.authUser = false;
+             return false;
+         }
+     }
 
   }
 })();

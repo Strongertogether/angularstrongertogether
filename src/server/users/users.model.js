@@ -35,6 +35,19 @@ model_users.signup = function(email, pass1, done){
 
 //local login
 
+model_users.getUser = function (id, callback) {
+    if (mysql.connection) {
+        mysql.connection.query('SELECT * FROM users WHERE email like "' + id + '"',
+        function (error, row) {
+            if (error) {
+                throw error;
+            } else {
+                callback(null, row);
+            }
+        });
+    }
+};
+
 model_users.login = function(email, pass, done){
 console.log("login model");
   if (mysql.connection) {
@@ -61,10 +74,31 @@ console.log("login model");
 };
   }
 
+model_users.countUser = function (id, callback) {
 
+    if (mysql.connection) {
+        mysql.connection.query('SELECT COUNT(*) AS userCount FROM users WHERE email like "' + id + '"',
+        function (error, rows) {
+            if (error) {
+                throw error;
+            } else {
+                callback(rows);
+            }
+        });
+    }
+};
 
+model_users.insertUser = function (userData, callback) {
 
-
-
+    if (mysql.connection) {
+        mysql.connection.query('INSERT INTO users SET ?', userData, function (err, result) {
+            if (err) {
+                throw err;
+            } else {
+                callback(result);
+            }
+        });
+    }
+};
 
 module.exports = model_users;

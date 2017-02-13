@@ -4,21 +4,118 @@ var passport = require('passport');
 var mysql = require ('./database');
 var bcrypt = require('bcrypt-nodejs');
 var model_users = require ('../users/users.model');
-
+var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
+var OAuthStrategy = require('passport-oauth').OAuthStrategy; //encara que no es gaste, fa falta
+var OAuth2Strategy = require('passport-oauth').OAuth2Strategy; //encara que no es gaste, fa falta
 
 // expose this function to our app using module.exports
 module.exports = function() {
 
   passport.serializeUser(function(user, done) {
-      done(null, user.id);
+      done(null, user);
   });
 
   // used to deserialize the user
   passport.deserializeUser(function(id, done) {
-    mysql.connection.query("select * from users where email = " + id, function(err, rows){
-      done(err, rows[0]);
+    //mysql.connection.query("select * from users where email = " + id, function(err, rows){
+      done(null, id);
     });
-        });
+      //  });
+
+
+
+
+
+passport.use(new FacebookStrategy({
+    clientID: '1679006592397779',
+    clientSecret: '70f4c5af2d055e13092084b492276ab8',
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    profileFields: ['name', 'email', 'locale', 'timezone'],
+    passReqToCallback: true
+}, function (req, accessToken, refreshToken, profile, done) {
+    console.log("ENTRA EN FACEBOOK STRATEGY");
+    console.log("PROFILE ID: " + profile.id);
+    console.log(profile);
+
+    model_users.countUser(profile.id, function (rows) {
+        if (rows[0].userCount === 0) {
+
+            console.log('NO EXISTE CREO NEW USER');
+            var newUser = {
+                name: profile._json.first_name,
+                surname: profile._json.last_name,
+                email: profile._json.id,
+                tipo: 'client',
+                password:'',
+            };
+            console.log("NUEVO USUARIO: " + newUser);
+            model_users.insertUser(newUser, function (rows) {
+                if (rows) {
+                    return done(null, rows);
+                }
+            });
+            return done(null, rows);
+        } else {
+            console.log('si existe y devuelvo datos');
+            model_users.getUser(profile._json.id, function (error, rows) {
+                if (!rows.length) {
+
+                    return done(null, false, 'nouser');
+
+                } else {
+                    console.log(rows[0]);
+                    return done(null, rows[0]);
+                }
+            });
+
+        }//fin del else
+    });//fin de count
+
+}))
+
+
+passport.use(new TwitterStrategy({
+  consumerKey: 'FH9iEQCePaLwAvpZE6OAhKoYq',
+  consumerSecret: 'KyHCvj92DYvO5myjYOFsEMC6xPKJ8NLeSwJcRC8T8qT12V29Mk',
+  callbackURL: 'http://localhost:3000/auth/twitter/callback',
+passReqToCallback : true
+},
+function(req, token, tokenSecret, profile, done) {
+ model_users.countUser(profile.id, function (rows) {
+        if (rows[0].userCount === 0) {
+
+            console.log('no existe usuario');
+            var newUser = {
+                name: profile.username,
+                email: profile.id,
+                tipo: 'client',
+                password:''
+            };
+
+            model_users.insertUser(newUser, function (rows) {
+                if (rows) {
+                    return done(null, newUser);
+                }
+            });//fin de consulta
+            //return done(null, rows);
+        } else {
+            console.log('ya existe');
+            model_users.getUser(profile.id, function (error, rows) {
+                if (!rows.length) {
+
+                    return done(null, false, 'nouser');
+
+                } else {
+
+                    return done(null, rows[0]);
+                }
+            });
+
+        }//fin del else
+    });
+}));
+
 
     // LOCAL SIGNUP
     passport.use('local-signup', new LocalStrategy({

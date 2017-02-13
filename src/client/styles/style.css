@@ -6,9 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-/**
----GOOGLE MAPS---
-**/
+/****** INICIO GOOGLEMAPS ******/
 
 /****menu*****/
 /*-- header --*/
@@ -56,7 +54,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	background:#ff9900;
 }
 .header {
-   background-color: #1b1c1d;
+   background-color: rgb(24, 43, 69);
 }
 .navbar-default .navbar-nav > li > a {
     color: #fff;
@@ -96,7 +94,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   left: 0;
   right: 0;
   bottom: 0;
-  background:#ff9900;
+  background:#06132A;
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
   -webkit-transform-origin: 50% 0;
@@ -118,17 +116,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: #fff;
 }
-/*-- //header --*/
-
 
 /********menu*******/
 
+/** Header **/
 header.major{
     background-color: #fff;
     border:solid 1px rgba(144, 144, 144, 0.25);
-    border-radius: 5px;
+    border-radius: 25px 25px 5px 5px;
 }
-
+/** Listado de hospitales **/
 .hospitals{
     display: inline-block;
     vertical-align: top;
@@ -156,30 +153,15 @@ header.major{
     box-shadow:         4px 4px 5px 0px rgba(144, 144, 144, 0.5);
 }
 
-.hospitals .of:hover .desc{
-    text-decoration: underline;
-    font-style: italic;
-}
-
 .hospital_title{
     background-color: #061C33;
     color:#f5f5f5;
-    font-size: 1.8em;
+    font-size: 2em;
     margin: 1em;
     padding: 1em 1em 1em 1em;
 }
 
-.gm-style-iw {
-    font-size: 1.2em;
-    text-align: center;
-    top: 15px !important;
-    left: 0 !important;
-    background-color: #e9f2fc;
-    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-    border: 1px solid rgba(72, 181, 233, 0.6);
-    border-radius: 10px;
-}
-
+/** Contenedor del mapa y listado de hospitales **/
 #mapholder{
     border:solid 1px rgba(144, 144, 144, 0.25);
     border-radius: 5px;
@@ -195,10 +177,62 @@ header.major{
     }
 }
 
+/** Letras listado de mapa **/
 .desc{
     font-weight: bold;
     font-size: 1.3em;
 }
+
+/** Barra de busqueda **/
+.flexsearch--wrapper {
+	height: auto;
+	width: auto;
+	max-width: 100%;
+	overflow: hidden;
+	background: transparent;
+	margin: 0;
+	position: static;
+}
+
+.flexsearch--input-wrapper {
+	padding: 0 66px 0 0; /* Right padding for submit button width */
+	overflow: hidden;
+}
+
+.flexsearch {
+  padding: 0 25px 0 70px; /* Padding for other horizontal elements */
+}
+
+.filtre {
+  -webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+  width: 100%;
+ 	height: 50px;
+  padding: 0 46px 0 10px;
+	border-color: #888;
+  border-radius: 35px; /* (height/2) + border-width */
+  border-style: solid;
+	border-width: 5px;
+  margin-top: 15px;
+  color: #333;
+  font-family: 'Helvetica', sans-serif;
+	font-size: 23px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.filtre:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.filtre:focus.flexsearch--submit {
+ 	color: #333;
+}
+
+/****** FIN GMAPS ******/
+
 
 /****** LOGIN MODAL ******/
 .text-danger{
