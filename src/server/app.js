@@ -38,21 +38,6 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(cors());                 //cal per a signin fb
 
-//require('./routes.js')(app);
-
-
-//////////////SIGNIN TWITTER/////////////////
-
-/*app.get('/auth/twitter', passport.authenticate('twitter'));
-
-	 app.get('/auth/twitter/callback',passport.authenticate('twitter',
-	 { failureRedirect: '/' }),
-  function(req, res) {
-    console.log('TWITTER login ' + JSON.stringify(req.user));
-    res.redirect('/');
-  });*/
-/////////////// END SIGNIN TWITTER//////////
-
 require('./config/routes.js').init(app);
 
 console.log('About to crank up node');

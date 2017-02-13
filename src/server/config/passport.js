@@ -13,19 +13,32 @@ var OAuth2Strategy = require('passport-oauth').OAuth2Strategy; //encara que no e
 module.exports = function() {
 
   passport.serializeUser(function(user, done) {
-      done(null, user);
+      done(null, user.email);
+      console.log("user " + user.email);
   });
 
-  // used to deserialize the user
-  passport.deserializeUser(function(id, done) {
-    //mysql.connection.query("select * from users where email = " + id, function(err, rows){
-      done(null, id);
+    passport.deserializeUser( function( id, done ) {
+    console.log('DESERIALIZE USER ' + id);
+    mysql.connection.query('select * from users where email = ' + id, function(err, rows){
+
+      if (err){done(err);}
+
+            // if no user is found, return the message
+            if (!rows.length){done(null, null);}
+                // all is well, return user
+                      else{
+
+                        var newUserMysql = {
+                          email : rows[0].email,
+                          name : rows[0].name,
+                          avatar : rows[0].avatar
+                        };
+
+                        done(err, newUserMysql);
+                      }
+
     });
-      //  });
-
-
-
-
+});
 
 passport.use(new FacebookStrategy({
     clientID: '1679006592397779',
