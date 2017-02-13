@@ -38,7 +38,6 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(cors());                 //cal per a signin fb
 
-
 require('./config/routes.js').init(app);
 
 console.log('About to crank up node');

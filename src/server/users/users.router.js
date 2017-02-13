@@ -16,7 +16,7 @@ module.exports = function(app){
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
 	 app.get('/auth/twitter/callback',passport.authenticate('twitter',
-	 { successRedirect: '/facebook', failureRedirect: '/' }),
+	 { successRedirect: '/facebook', failureRedirect: '/' }),   
   function(req, res) {
     console.log('TWITTER login ' + JSON.stringify(req.user));
     res.redirect('/');
