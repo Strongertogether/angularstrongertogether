@@ -16,7 +16,8 @@
       facebook: facebook,
       login: login,
       twitter:twitter,
-      checkLoggedin: checkLoggedin
+      checkLoggedin: checkLoggedin,
+      isLoggedin: isLoggedin
     };
 
     return service;
