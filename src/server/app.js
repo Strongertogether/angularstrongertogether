@@ -27,6 +27,7 @@ app.use(cookieParser());
 
 // required for passport
 require('./config/passport.js')(passport);
+
 app.use(session({
 	resave: false,
 	saveUninitialized: false,
@@ -39,34 +40,6 @@ app.use(cors());                 //cal per a signin fb
 
 //require('./routes.js')(app);
 
-require('./contact/contact.router.js')(app);
-require('./specialists/specialists.router.js')(app);
-require('./hospitals/hospitals.router.js')(app);
-require('./users/users.router.js')(app);
-
-
-//////////// SIGNIN FB //////////////////
-
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-	 app.get('/auth/facebook/callback', passport.authenticate('facebook',
-	 { successRedirect: '/facebook', failureRedirect: '/' }));
-
-	 app.get('/auth/success', function(req, res) {
-         res.json(req.user);
-     });
-
-     app.get('/auth/failure', function(req, res) {
-         console.log('fail');
-         res.render('after-auth', { state: 'failure', user: null });
-     });
-
-		 app.get('/logout', function(req, res) {
-		  req.logOut();
-		  res.redirect('/');
-		  //res.send(200);
-		});
-/////////////// END SIGNIN FB ///////////////
 
 //////////////SIGNIN TWITTER/////////////////
 
@@ -78,12 +51,9 @@ app.get('/auth/twitter', passport.authenticate('twitter'));
     console.log('TWITTER login ' + JSON.stringify(req.user));
     res.redirect('/');
   });
-
-		 app.get('/logout', function(req, res) {
-		  req.logOut();
-		  res.redirect('/');
-		});
 /////////////// END SIGNIN TWITTER//////////
+
+require('./config/routes.js').init(app);
 
 console.log('About to crank up node');
 console.log('PORT=' + port);

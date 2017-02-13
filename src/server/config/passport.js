@@ -34,9 +34,6 @@ passport.use(new FacebookStrategy({
     profileFields: ['name', 'email', 'locale', 'timezone'],
     passReqToCallback: true
 }, function (req, accessToken, refreshToken, profile, done) {
-    console.log("ENTRA EN FACEBOOK STRATEGY");
-    console.log("PROFILE ID: " + profile.id);
-    console.log(profile);
 
     model_users.countUser(profile.id, function (rows) {
         if (rows[0].userCount === 0) {

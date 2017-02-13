@@ -9,7 +9,8 @@
     'app.hospitals',
     'app.layout',
     'app.specialists',
-    'app.users'
+    'app.users',
+    'app.profile'
   ]);
 
 })();
