@@ -39,11 +39,11 @@ module.exports = function() {
 
     });
 });
-
+//process.env.SECRET_KEY
 passport.use(new FacebookStrategy({
-    clientID: '1679006592397779',
-    clientSecret: '70f4c5af2d055e13092084b492276ab8',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    clientID: process.env.ID_FACEBOOK,
+    clientSecret: process.env.SECRET_FACEBOOK,
+    callbackURL: process.env.CALLBACK_FACEBOOK,
     profileFields: ['name', 'email', 'locale', 'timezone'],
     passReqToCallback: true
 }, function (req, accessToken, refreshToken, profile, done) {
@@ -86,9 +86,9 @@ passport.use(new FacebookStrategy({
 
 
 passport.use(new TwitterStrategy({
-  consumerKey: 'FH9iEQCePaLwAvpZE6OAhKoYq',
-  consumerSecret: 'KyHCvj92DYvO5myjYOFsEMC6xPKJ8NLeSwJcRC8T8qT12V29Mk',
-  callbackURL: 'http://localhost:3000/auth/twitter/callback',
+  consumerKey: process.env.ID_TWITTER,
+  consumerSecret: process.env.SECRET_TWITTER,
+  callbackURL: process.env.CALLBACK_TWITTER,
 passReqToCallback : true
 },
 function(req, token, tokenSecret, profile, done) {
