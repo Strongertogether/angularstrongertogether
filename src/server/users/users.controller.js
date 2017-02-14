@@ -59,5 +59,5 @@ function loggedin(req, res){
   console.log(req.isAuthenticated());
 
   res.send(req.isAuthenticated() ? req.user : '0');
-  
+
 }

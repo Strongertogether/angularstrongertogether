@@ -62,6 +62,7 @@
 
       function success(response) {
         $rootScope.authUser = response.data;
+        console.log(response);
         return response;
       }
 
@@ -124,6 +125,7 @@
           .catch(fail);
 
         function success(responseUser) {
+          console.log("checkLoggedin1 " + responseUser.data )
           if (responseUser.data === '0') {
             $rootScope.authUser = false;
             $state.go('users');

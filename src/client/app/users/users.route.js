@@ -12,7 +12,6 @@
   }
 
   function getStates() {
-    console.log("Entra getStates");
     return [{
         state: 'users',
         config: {

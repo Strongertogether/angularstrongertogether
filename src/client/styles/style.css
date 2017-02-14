@@ -698,7 +698,7 @@ ul.navig {
 /*--banner-start--*/
 /*-- w3layouts --*/
 .banner1 {
-	background: url(../images/2.jpg) no-repeat;
+	background: url(../../../build/images/cancer_survivor/promotional3.jpg) no-repeat;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -707,7 +707,7 @@ ul.navig {
 	min-height: 600px;
 }
 .banner2 {
-	background: url(../images/3.jpg) no-repeat;
+	background: url(../../../build/images/cancer_survivor/promotional1.jpg) no-repeat;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
