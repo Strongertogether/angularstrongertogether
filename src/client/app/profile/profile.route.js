@@ -21,11 +21,6 @@
           controller: 'ProfileController',
           controllerAs: 'vm',
           title: 'Profile',
-          settings: {
-          nav: 6,
-            content: '<i class="fa fa-lock"></i> Profile'
-          },
-
           resolve:{
             loggedin: dataservice.checkLoggedin
           }

@@ -1,15 +1,20 @@
 <div ng-controller="SidebarController as vm">
   <ht-sidebar when-done-animating="vm.sidebarReady()">
     <div class="sidebar-filler"></div>
-    <!--<div class="sidebar-dropdown"><a href="#">Menu</a></div>-->
     <div class="sidebar-inner">
       <div class="sidebar-widget"></div>
-      <ul class="navig cl-effect-16">
-        <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes" >
+      <ul class="nav navbar-nav">
+        <li class="hvr-sweep-to-bottom" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes" >
           <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
         </li>
-        <li class="nlightblue fade-selection-animation"><a href="" ng-click="vm.openModal()">Login</a></li>
-
+        <li id="logoutButton" ng-show="$root.authUser">
+            <a target="_self" href="/profile"><span class="fa fa-sign-out"></span>{{ $root.authUser.name}} Profile</a>
+        </li>
+        <li class="hvr-sweep-to-bottom"><a ng-show="!$root.authUser" href="" ng-click="vm.openModal()">Login</a></li>
+        <!--FACEBOOK-->
+        <li><a class="hvr-sweep-to-bottom" ng-show="!$root.authUser" target="_self" href="http://localhost:3000/auth/facebook"><img src="../../../../build/images/facebook.svg" alt="Sign In Facebook"/></a></li>
+        <!--twitter-->
+        <li><a class="hvr-sweep-to-bottom" ng-show="!$root.authUser" target="_self" href="http://localhost:3000/auth/twitter"><img src="../../../../build/images/twitter.svg" alt="Sign In Twitter"/></a></li>
         <!-- User auth info -->
 <!--
         <li id="userAuthInfo" ng-show="$root.authUser">
@@ -19,7 +24,6 @@
         <li id="logoutButton" ng-show="$root.authUser">
             <a target="_self" href="http://localhost:3000/logout"><span class="fa fa-sign-out"></span>Logout</a>
         </li>
-
       </ul>
     </div>
   </ht-sidebar>

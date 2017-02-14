@@ -5,9 +5,9 @@
     .module('app.layout')
     .controller('SidebarController', SidebarController);
 
-  SidebarController.$inject = ['$state', 'routerHelper', '$uibModal'];
+  SidebarController.$inject = ['$state', 'routerHelper', '$uibModal', 'dataservice', '$rootScope', '$q', 'logger'];
   /* @ngInject */
-  function SidebarController($state, routerHelper, $uibModal) {
+  function SidebarController($state, routerHelper, $uibModal, dataservice, $rootScope, $q, logger) {
     var vm = this;
     var states = routerHelper.getStates();
     vm.isCurrent = isCurrent;
@@ -16,7 +16,18 @@
 
     activate();
 
-    function activate() { getNavRoutes(); }
+  //  function activate() { getNavRoutes(); }
+
+
+        function activate() {
+          getNavRoutes();
+
+          var promises = [getAuthUser()];
+          return $q.all(promises).then(function() {
+            logger.info('Activated layout View');
+          });
+
+        }
 
     function getNavRoutes() {
       vm.navRoutes = states.filter(function(r) {
@@ -25,6 +36,13 @@
         return r1.settings.nav - r2.settings.nav;
       });
     }
+
+    function getAuthUser(){
+    return dataservice.isLoggedin().then(function(data) {
+      $rootScope.authUser = data;
+      return $rootScope.authUser;
+    });
+  }
 
     function isCurrent(route) {
       if (!route.title || !$state.current || !$state.current.title) {

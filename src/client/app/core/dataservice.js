@@ -15,7 +15,9 @@
       signUp: signUp,
       facebook: facebook,
       login: login,
-      checkLoggedin: checkLoggedin
+      twitter:twitter,
+      checkLoggedin: checkLoggedin,
+      isLoggedin: isLoggedin
     };
 
     return service;
@@ -117,6 +119,23 @@
           }
       }
 
+      function twitter() {
+         return $http.get('/auth/success')
+                 .then(success)
+                 .catch(fail);
+
+         function success(response) {
+             console.log('entre a success ');
+             $rootScope.authUser = response.data;
+             return response;
+         }
+
+         function fail() {
+             console.log('entre a fail');
+             $rootScope.authUser = false;
+             return false;
+         }
+     }
 
       function checkLoggedin() {
 

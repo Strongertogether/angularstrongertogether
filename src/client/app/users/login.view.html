@@ -19,8 +19,8 @@
               <input type="submit" id="submitLogin" name="submitLogin" class="login loginmodal-submit" value="Login" ng-click="vm.submitLogin()">
   				  </form>
 
-  				  <div ng-controller="SidebarController as vm" class="login-help">
-            <p >Not registered? <a ng-click="vm.openSignUp(); closeModal()" href="#">Create an account</a></p>
+  				  <div ng-controller="SidebarController as vm" ng-view class="login-help">
+            <p>Not registered? <a ng-click="vm.openSignUp(); closeModal()" href="#">Create an account</a></p>
             <p >Forgot your password? <a href="#" >Click Here!</a></p><br>
   				  </div>
   				</div>
