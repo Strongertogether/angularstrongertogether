@@ -26,7 +26,7 @@
         $state.go('main');
 
         console.log(response);
-        console.log("Email: " + response.data.email);
+        console.log('Email: ' + response.data.email);
       });
     }
   }

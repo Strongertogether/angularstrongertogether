@@ -19,7 +19,7 @@
 
 
     function sendContact() {
-      console.log("sendContact");
+      console.log('sendContact');
       var data = {
         name: vm.inputName,
         from: vm.inputEmail,

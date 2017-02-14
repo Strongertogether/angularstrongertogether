@@ -14,7 +14,7 @@
     vm.people = [];
     vm.title = 'modal';
 
-    $scope.closeModal=function() {
+    $scope.closeModal = function() {
       $uibModalInstance.dismiss('cancel');
     };
   }

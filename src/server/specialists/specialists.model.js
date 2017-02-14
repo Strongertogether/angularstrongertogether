@@ -15,7 +15,7 @@ specialistsModel.getSpecialists = function (callback){
           }
       });
   }
-}
+};
 
 specialistsModel.getSpecialist = function(id,callback){
     if (mysql.connection) {
@@ -28,6 +28,6 @@ specialistsModel.getSpecialist = function(id,callback){
             }
         });
     }
-}
+  };
 
 module.exports = specialistsModel;

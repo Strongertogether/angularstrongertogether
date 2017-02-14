@@ -12,48 +12,48 @@ module.exports.logout = logout;
 module.exports.loggedin = loggedin;
 
 function signup(req, res, next) {
-console.log("controller signup server");
-passport.authenticate('local-signup', function(err, user, info) {
-  console.log(err,user,info);
-  if (err) {
-      return res.send('err');
-  }
-  if (!user) {
-      return res.send('signuperror');
-  }
-      return res.send(true);
-  })(req, res, next);
-};
-
-function login(req, res, next) {
-console.log("controller login server");
-passport.authenticate('local-login', function(err, user, info) {
-  console.log(err,user,info);
+  console.log('controller signup server');
+  passport.authenticate('local-signup', function(err, user, info) {
+    console.log(err,user,info);
     if (err) {
-        return res.send('err');
+      return res.send('err');
     }
     if (!user) {
-        return res.send('loginerror');
+      return res.send('signuperror');
     }
-        return res.send(user);
+    return res.send(true);
   })(req, res, next);
-};
-
-function authSuccess(req, res){
-        res.json(req.user);
 }
 
-function authFailure(req, res){
-      console.log('fail');
-      res.render('after-auth', { state: 'failure', user: null });
+function login(req, res, next) {
+  console.log('controller login server');
+  passport.authenticate('local-login', function(err, user, info) {
+    console.log(err,user,info);
+    if (err) {
+      return res.send('err');
+    }
+    if (!user) {
+      return res.send('loginerror');
+    }
+    return res.send(user);
+  })(req, res, next);
 }
 
-function logout(req, res){
-   req.logOut();
-   res.redirect('/');
+function authSuccess(req, res) {
+  res.json(req.user);
 }
 
-function loggedin(req, res){
+function authFailure(req, res) {
+  console.log('fail');
+  res.render('after-auth', { state: 'failure', user: null });
+}
+
+function logout(req, res) {
+  req.logOut();
+  res.redirect('/');
+}
+
+function loggedin(req, res) {
   console.log('LOGGEDIN ' + JSON.stringify(req.user));
   console.log('session ' + JSON.stringify(req.session));
   console.log(req.isAuthenticated());

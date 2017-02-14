@@ -9,8 +9,8 @@
   /* @ngInject */
   function LoginController($q, $scope, dataservice, logger, $state) {
     var vm = this;
-    vm.inputEmail = "";
-    vm.inputPass = "";
+    vm.inputEmail = '';
+    vm.inputPass = '';
     vm.submitSignUp = submitSignUp;
     vm.submitLogin = submitLogin;
 
@@ -21,8 +21,8 @@
     ///signup local
   function submitSignUp(){
     var data = {
-      "email": vm.inputEmail,
-      "pass": vm.inputPass,
+      'email': vm.inputEmail,
+      'pass': vm.inputPass,
           };
 
     dataservice.signUp(data).then(function (response) {
@@ -31,7 +31,7 @@
           logger.success('Usuario registrado con exito.');
           $scope.closeModal();
           $state.go('main');
-        }else if(response.data=="signuperror"){
+        }else if (response.data === 'signuperror') {
           logger.error('El Usuario introducido ya existe.');
         }else{
           logger.error('Ups, ha habido un error en el server.');
@@ -42,8 +42,8 @@
   ///login local
 function submitLogin(){
   var data = {
-    "email": vm.inputEmail,
-    "pass": vm.inputPass,
+    'email': vm.inputEmail,
+    'pass': vm.inputPass,
         };
 
         dataservice.login(data).then(function (response) {
@@ -53,7 +53,7 @@ function submitLogin(){
                 $state.go('main');
                 $scope.closeModal();
             } else if (response.data === 'loginerror') {
-                    logger.error('Ha habido un error en la autentificación, el email o la contraseña introducidos no son correctos');
+     logger.error('Ha habido un error en la autentificación, el email o la contraseña introducidos no son correctos');
             } else {
                     logger.error('Ups, ha habido un error en el server.');
             }

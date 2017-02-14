@@ -58,7 +58,7 @@
       animation: 'true',
       templateUrl: 'app/users/login.view.html',
       controller: 'modalController',
-      size: ""
+      size: ''
       });
     }
 
@@ -68,7 +68,7 @@
       animation: 'true',
       templateUrl: 'app/users/sign_up.view.html',
       controller: 'modalController',
-      size: ""
+      size: ''
       });
     }
 

@@ -24,7 +24,7 @@
 
     function getMessageCount() { return $q.when(72); }
 
-    function sendemail(data){
+    function sendemail(data) {
       console.log(data);
       return $http.post('/api/sendmail', data)
            .then(success)
@@ -39,8 +39,8 @@
       }
     }
 
-    function signUp(data){
-      console.log("dataservice: "+ data);
+    function signUp(data) {
+      console.log('dataservice: ' + data);
       console.log(data);
       return $http.post('/api/signup', data)
            .then(success)
@@ -55,8 +55,8 @@
       }
     }
 
-    function login(data){
-      console.log("dataservice login: "+ data);
+    function login(data) {
+      console.log('dataservice login: ' + data);
       console.log(data);
       return $http.post('/api/login', data)
            .then(success)
@@ -75,7 +75,7 @@
     }
 
     function getSpecialists() {
-         return $http.get('/api/specialists')
+      return $http.get('/api/specialists')
            .then(success)
            .catch(fail);
 
@@ -144,7 +144,7 @@
           .catch(fail);
 
         function success(responseUser) {
-          console.log("checkLoggedin1 " + responseUser.data )
+          console.log('checkLoggedin1 ' + responseUser.data );
           if (responseUser.data === '0') {
             $rootScope.authUser = false;
             $state.go('users');

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title ng-bind="title">Strongtogether</title>
+  <link rel="shortcut icon" href="../../build/images/favicon"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="google" content="nositelinkssearchbox" />
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Strongertogether application, help yourself to improve throw hard times" />
+  <meta name="keywords" content="HTML,CSS,JavaScript,NodeJS,Angular,JQuery">
+  <meta name="author" content="Lluis Mataix,Carles Catalan">
+  <!--CSS-->
+  <link href="/src/client/styles/bootstrap.css" rel='stylesheet' type='text/css' />
+  <link href="/src/client/styles/owl.carousel.css" rel="stylesheet">
+  <link href="/src/client/styles/lightbox.css" rel="stylesheet">
+  <link href="/src/client/styles/animate.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <!--JS-->
+  <script src="/src/client/js/modernizr.custom.97074.js"></script>
+
+  <style>
+    /* This helps the ng-show/ng-hide animations start at the right place. */
+    /* Since Angular has this but needs to load, this gives us the class early. */
+    .ng-hide {
+      display: none!important;
+    }
+  </style>
+  <base href="/">
+
+  <link rel="stylesheet" href="styles/lib-0da058aa83.css">
+  <link rel="stylesheet" href="styles/app-63b57ad8d4.css">
+</head>
+<body>
+  <div>
+    <div ng-include="'app/layout/shell.html'"></div>
+    <div id="splash-page" ng-show="showSplash">
+      <div class="page-splash">
+        <div class="page-splash-message">
+          StrongerTogether
+        </div>
+        <div class="progress progress-striped active page-progress-bar">
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9FGiHcq-P4ACcFAQQpY75UzzONTQrYkM" async defer></script> -->
+  <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyD9FGiHcq-P4ACcFAQQpY75UzzONTQrYkM'></script>
+
+
+  <script src="js/lib-5764851d50.js"></script>
+<script src="/src/client/js/owl.carousel.js"></script>
+  <script src="js/app-baf65dd9a3.js"></script>
+</body>
+
+</html>
