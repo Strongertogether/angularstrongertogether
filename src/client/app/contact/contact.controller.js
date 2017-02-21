@@ -16,8 +16,8 @@
     vm.inputSubject = '';
     vm.inputMessage = '';
     vm.sendContact = sendContact;
-    $translatePartialLoader.addPart('contact');
 
+    $translatePartialLoader.addPart('contact');
 
     function sendContact() {
       console.log("sendContact");

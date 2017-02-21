@@ -12,10 +12,12 @@
                              routerHelper, $uibModal, dataservice, $rootScope, $q, logger) {
     var vm = this;
     $translatePartialLoader.addPart('layout');
+
     var states = routerHelper.getStates();
     vm.isCurrent = isCurrent;
     vm.openModal = openModal;
     vm.openSignUp = openSignUp;
+
     vm.setLang = setLang;
 
     activate();
@@ -88,7 +90,6 @@
       var menuName = route.title;
       return $state.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
     }
-
 
   }
 })();
