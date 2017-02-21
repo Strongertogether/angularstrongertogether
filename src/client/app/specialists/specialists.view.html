@@ -1,0 +1,46 @@
+<!--
+ <section id="specialists" >
+          <nav class="options">
+              <h2>Specialists <span>disponibles cerca de ti</span></h2>
+          </nav>
+
+      <div>
+          <div class="specialists">
+              <div ng-repeat="specialist in vm.specialists" id="{{specialist.id}}">
+                <a href='#/specialists'>
+                  <div class="inline"><h2>ID: {{specialist.id}}</h2><h3>Name: {{specialist.name}}</h3></div>
+                </a>
+              </div>
+          </div>
+      </div>
+  </section>
+-->
+<div class="events">
+<div class="container">
+<h3>Specialists near you.</h3>
+<p class="fugiat colr">Our Strongertogether Team will provide you the best information about
+the finest professionals on each medical specialization.</p>
+<div class="events-grid">
+
+<div class="col-md-4 events-grid-left wow fadeInRight animated" data-wow-delay=".5s">
+<a href="singlepage.html">
+
+  <div ng-repeat="specialist in vm.specialists" id="{{specialist.id}}">
+  <div class="events-grid-left-top">
+    <p><span> City: {{specialist.city}} - {{specialist.province}}</span></p>
+  </div>
+  <img src="/src/client/images/s1.jpg" alt=" " class="img-responsive">
+  <div class="events-pos">
+    <p> Name: {{specialist.name}}<br>
+        Surname: {{specialist.surname}}<br>
+        Speciality: {{specialist.specialty}}<br>
+    </p>
+  </div>
+  </a>
+</div>
+</div>
+
+<div class="clearfix"> </div>
+</div>
+</div>
+</div>

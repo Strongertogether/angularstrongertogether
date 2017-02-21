@@ -1,0 +1,43 @@
+<div ng-controller="SidebarController as vm">
+  <ht-sidebar when-done-animating="vm.sidebarReady()">
+    <div class="sidebar-filler"></div>
+    <div class="sidebar-inner">
+      <div class="sidebar-widget"></div>
+      <ul class="nav navbar-nav">
+        <li class="hvr-sweep-to-bottom" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes" >
+          <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
+        </li>
+        <li id="logoutButton" ng-show="$root.authUser">
+            <a target="_self" href="/profile"><span class="fa fa-sign-out"></span>{{ $root.authUser.name}} {{'PROFILE' | translate}}</a>
+        </li>
+        <li class="hvr-sweep-to-bottom"><a ng-show="!$root.authUser" href="" ng-click="vm.openModal()">{{'LOGIN' | translate}}</a></li>
+        <!--FACEBOOK-->
+        <li><a class="hvr-sweep-to-bottom" ng-show="!$root.authUser" target="_self" href="http://localhost:3000/auth/facebook"><img src="../../../../build/images/facebook.svg" alt="Sign In Facebook"/></a></li>
+        <!--twitter-->
+        <li><a class="hvr-sweep-to-bottom" ng-show="!$root.authUser" target="_self" href="http://localhost:3000/auth/twitter"><img src="../../../../build/images/twitter.svg" alt="Sign In Twitter"/></a></li>
+        <!-- User auth info -->
+<!--
+        <li id="userAuthInfo" ng-show="$root.authUser">
+            <a target="_self" href="http://localhost:3000/api/loggedin"><img src="{{$root.authUser.photos[0].value}}" /> Welcome  {{ $root.authUser.name}}</a>
+        </li>
+-->
+        <li id="logoutButton" ng-show="$root.authUser">
+            <a target="_self" href="http://localhost:3000/logout"><span class="fa fa-sign-out"></span>{{'LOGOUT' | translate}}</a>
+        </li>
+
+        <li>
+          <div class="dropdown nav navbar-nav pull-left">
+            <button id="dLabel" type="button" data-toggle="dropdown" translate="LANGUAGE">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li> <a ng-click="vm.setLang('en')" translate="ENGLISH">English</a></li>
+              <li> <a ng-click="vm.setLang('ca')" translate="CATALA">Catala</a></li>
+            </ul> 
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </ht-sidebar>
+</div>

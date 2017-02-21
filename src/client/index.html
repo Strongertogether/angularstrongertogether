@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title ng-bind="title">Strongtogether</title>
+  <link rel="shortcut icon" href="../../build/images/favicon"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="google" content="nositelinkssearchbox" />
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Strongertogether application, help yourself to improve throw hard times" />
+  <meta name="keywords" content="HTML,CSS,JavaScript,NodeJS,Angular,JQuery">
+  <meta name="author" content="Lluis Mataix,Carles Catalan">
+  <!--CSS-->
+  <link href="/src/client/styles/bootstrap.css" rel='stylesheet' type='text/css' />
+  <link href="/src/client/styles/owl.carousel.css" rel="stylesheet">
+  <link href="/src/client/styles/lightbox.css" rel="stylesheet">
+  <link href="/src/client/styles/animate.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <!--JS-->
+  <script src="/src/client/js/modernizr.custom.97074.js"></script>
+
+  <style>
+    /* This helps the ng-show/ng-hide animations start at the right place. */
+    /* Since Angular has this but needs to load, this gives us the class early. */
+    .ng-hide {
+      display: none!important;
+    }
+  </style>
+  <base href="/">
+
+  <!-- build:css styles/lib.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+  <link rel="stylesheet" href="/bower_components/flexslider/flexslider.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css styles/app.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/.tmp/styles.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+</head>
+<body>
+  <div>
+    <div ng-include="'app/layout/shell.html'"></div>
+    <div id="splash-page" ng-show="showSplash">
+      <div class="page-splash">
+        <div class="page-splash-message">
+          StrongerTogether
+        </div>
+        <div class="progress progress-striped active page-progress-bar">
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9FGiHcq-P4ACcFAQQpY75UzzONTQrYkM" async defer></script> -->
+  <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyD9FGiHcq-P4ACcFAQQpY75UzzONTQrYkM'></script>
+
+
+  <!-- build:js js/lib.js -->
+  <!-- bower:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+  <script src="/bower_components/lodash/lodash.js"></script>
+  <script src="/bower_components/markerclustererplus/src/markerclusterer.js"></script>
+  <script src="/bower_components/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.js"></script>
+  <script src="/bower_components/google-maps-utility-library-v3-infobox/dist/infobox.js"></script>
+  <script src="/bower_components/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.js"></script>
+  <script src="/bower_components/js-rich-marker/src/richmarker.js"></script>
+  <script src="/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
+  <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/toastr/toastr.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/flexslider/jquery.flexslider.js"></script>
+  <script src="/bower_components/wow/dist/wow.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="/bower_components/angular-translate/angular-translate.js"></script>
+  <script src="/bower_components/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+  <script src="/bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+  <script src="/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+  <script src="/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+  <script src="/bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+<script src="/src/client/js/owl.carousel.js"></script>
+  <!-- build:js js/app.js -->
+  <!-- inject:js -->
+  <script src="/src/client/app/app.module.js"></script>
+  <script src="/src/client/app/blocks/exception/exception.module.js"></script>
+  <script src="/src/client/app/blocks/logger/logger.module.js"></script>
+  <script src="/src/client/app/blocks/router/router.module.js"></script>
+  <script src="/src/client/app/contact/contact.module.js"></script>
+  <script src="/src/client/app/core/core.module.js"></script>
+  <script src="/src/client/app/hospitals/hospitals.module.js"></script>
+  <script src="/src/client/app/layout/layout.module.js"></script>
+  <script src="/src/client/app/main/main.module.js"></script>
+  <script src="/src/client/app/profile/profile.module.js"></script>
+  <script src="/src/client/app/specialists/specialists.module.js"></script>
+  <script src="/src/client/app/users/users.module.js"></script>
+  <script src="/src/client/app/widgets/widgets.module.js"></script>
+  <script src="/src/client/app/blocks/exception/exception-handler.provider.js"></script>
+  <script src="/src/client/app/blocks/exception/exception.js"></script>
+  <script src="/src/client/app/blocks/logger/logger.js"></script>
+  <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
+  <script src="/src/client/app/contact/contact.controller.js"></script>
+  <script src="/src/client/app/contact/contact.route.js"></script>
+  <script src="/src/client/app/core/config.js"></script>
+  <script src="/src/client/app/core/constants.js"></script>
+  <script src="/src/client/app/core/core.route.js"></script>
+  <script src="/src/client/app/core/dataservice.js"></script>
+  <script src="/src/client/app/hospitals/hospitals.controller.js"></script>
+  <script src="/src/client/app/hospitals/hospitals.route.js"></script>
+  <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
+  <script src="/src/client/app/layout/ht-top-nav.directive.js"></script>
+  <script src="/src/client/app/layout/shell.controller.js"></script>
+  <script src="/src/client/app/layout/sidebar.controller.js"></script>
+  <script src="/src/client/app/main/main.controller.js"></script>
+  <script src="/src/client/app/main/main.route.js"></script>
+  <script src="/src/client/app/profile/profile.controller.js"></script>
+  <script src="/src/client/app/profile/profile.route.js"></script>
+  <script src="/src/client/app/specialists/specialists.controller.js"></script>
+  <script src="/src/client/app/specialists/specialists.route.js"></script>
+  <script src="/src/client/app/users/modal.controller.js"></script>
+  <script src="/src/client/app/users/socialController.controller.js"></script>
+  <script src="/src/client/app/users/users.controller.js"></script>
+  <script src="/src/client/app/users/users.route.js"></script>
+  <script src="/src/client/app/widgets/configApiGoogleMaps.js"></script>
+  <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
+  <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
+  <!-- endinject -->
+
+  <!-- inject:templates:js -->
+  <!-- endinject -->
+  <!-- endbuild -->
+</body>
+
+</html>

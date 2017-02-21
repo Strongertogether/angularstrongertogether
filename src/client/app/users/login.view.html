@@ -1,0 +1,27 @@
+<button type="button" style="margin-right:10px;" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  				<div class="loginmodal-container">
+  					<h1>Login to Your Account</h1><br>
+  				  <form ng-controller="LoginController as vm" id="login_form" name="login_form">
+              <input required ng-model="vm.inputEmail" type="email" id="inputEmail" name="inputEmail"
+                placeholder="Email"  maxlength="100"
+                ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i">
+                <span class="text-danger" ng-show="login_form.inputEmail.$error.required && (login_form.inputEmail.$dirty || login_form.inputEmail.$touched)">El campo es obligatorio</span>
+                <span class="text-danger" ng-show="login_form.inputEmail.$error.email">Email no valido</span>
+                <span class="text-danger" ng-show="AlertMessage" ng-model="login_form.email_error">{{login_form.email_error}}</span>
+
+              <input ng-model="vm.inputPass" ng-pattern="/^.{6,12}$/" type="password" id="inputPass" name="inputPass" placeholder="Password" value="" required>
+                  <span class="text-danger" ng-show="login_form.inputPass.$error.required && (login_form.inputPass.$dirty || login_form.inputPass.$touched)">El campo es obligatorio</span>
+                  <span class="text-danger" ng-show="login_form.inputPass.$error.pattern">Password no válido</span><br />
+                  <span class="text-danger" ng-show="AlertMessage" ng-model="login_form.pass_error">{{login_form.pass_error}}</span>
+
+              <input type="submit" id="submitLogin" name="submitLogin" class="login loginmodal-submit" value="Login" ng-click="vm.submitLogin()">
+  				  </form>
+
+  				  <div ng-controller="SidebarController as vm" ng-view class="login-help">
+            <p>Not registered? <a ng-click="vm.openSignUp(); closeModal()" href="#">Create an account</a></p>
+            <p >Forgot your password? <a href="#" >Click Here!</a></p><br>
+  				  </div>
+  				</div>
+  			</div>
