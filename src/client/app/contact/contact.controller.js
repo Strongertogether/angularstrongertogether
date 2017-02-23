@@ -5,9 +5,9 @@
     .module('app.contact')
     .controller('ContactController', ContactController);
 
-    ContactController.$inject = ['$q', 'dataservice','$state'];
+    ContactController.$inject = ['$translatePartialLoader', '$q', 'dataservice','$state'];
   /* @ngInject */
-  function ContactController($q, dataservice, $state) {
+  function ContactController($translatePartialLoader, $q, dataservice, $state) {
     var vm = this;
 
     vm.title = 'Contact';
@@ -17,6 +17,7 @@
     vm.inputMessage = '';
     vm.sendContact = sendContact;
 
+    $translatePartialLoader.addPart('contact');
 
     function sendContact() {
       console.log('sendContact');

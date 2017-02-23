@@ -5,14 +5,20 @@
     .module('app.layout')
     .controller('SidebarController', SidebarController);
 
-  SidebarController.$inject = ['$state', 'routerHelper', '$uibModal', 'dataservice', '$rootScope', '$q', 'logger'];
+  SidebarController.$inject = ['$translate', '$translatePartialLoader', '$state','routerHelper',
+                               '$uibModal', 'dataservice', '$rootScope', '$q', 'logger'];
   /* @ngInject */
-  function SidebarController($state, routerHelper, $uibModal, dataservice, $rootScope, $q, logger) {
+  function SidebarController($translate, $translatePartialLoader, $state, 
+                             routerHelper, $uibModal, dataservice, $rootScope, $q, logger) {
     var vm = this;
+    $translatePartialLoader.addPart('layout');
+
     var states = routerHelper.getStates();
     vm.isCurrent = isCurrent;
     vm.openModal = openModal;
     vm.openSignUp = openSignUp;
+
+    vm.setLang = setLang;
 
     activate();
 
@@ -72,6 +78,18 @@
       });
     }
 
+    function setLang(langKey) {
+      // You can change the language during runtime
+      $translate.use(langKey);
+    }
+
+    function isCurrent(route) {
+      if (!route.title || !$state.current || !$state.current.title) {
+        return '';
+      }
+      var menuName = route.title;
+      return $state.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
+    }
 
   }
 })();
