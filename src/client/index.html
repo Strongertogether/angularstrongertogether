@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
   <title ng-bind="title">Strongtogether</title>
-  <link rel="shortcut icon" href="../../build/images/favicon"/>
+  <link rel="shortcut icon" href="images/favicon"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="google" content="nositelinkssearchbox" />
@@ -17,7 +17,7 @@
   <link href="/src/client/styles/animate.css" rel="stylesheet" type="text/css" media="all">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <!--JS-->
-  <script src="/src/client/js/modernizr.custom.97074.js"></script>
+
 
   <style>
     /* This helps the ng-show/ng-hide animations start at the right place. */
@@ -37,7 +37,13 @@
   <!-- endbuild -->
   <!-- build:css styles/app.css -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="/.tmp/styles.css">
+
+  <link rel="stylesheet" href="/src/client/styles/owl.carousel.css">
+
+  <link rel="stylesheet" href="/src/client/styles/hospital.css">
+
+  <link rel="stylesheet" href="/src/client/styles/style.css">
+
   <!-- endinject -->
   <!-- endbuild -->
 </head>
@@ -84,6 +90,7 @@
   <!-- endbower -->
   <!-- endbuild -->
 <script src="/src/client/js/owl.carousel.js"></script>
+<script src="/src/client/js/modernizr.custom.97074.js"></script>
   <!-- build:js js/app.js -->
   <!-- inject:js -->
   <script src="/src/client/app/app.module.js"></script>
@@ -117,6 +124,8 @@
   <script src="/src/client/app/layout/sidebar.controller.js"></script>
   <script src="/src/client/app/main/main.controller.js"></script>
   <script src="/src/client/app/main/main.route.js"></script>
+  <script src="/src/client/js/modernizr.custom.97074.js"></script>
+  <script src="/src/client/js/owl.carousel.js"></script>
   <script src="/src/client/app/profile/profile.controller.js"></script>
   <script src="/src/client/app/profile/profile.route.js"></script>
   <script src="/src/client/app/specialists/specialists.controller.js"></script>

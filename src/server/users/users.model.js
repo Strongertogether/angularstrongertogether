@@ -38,7 +38,7 @@ modelUsers.signup = function(email, pass1, done) {
 
 modelUsers.getUser = function (id, callback) {
     if (mysql.connection) {
-      mysql.connection.query('SELECT * FROM users WHERE email like "' + id + '"',
+      mysql.connection.query("SELECT * FROM users WHERE email like '" + id + "'",
         function (error, row) {
             if (error) {
               throw error;
@@ -78,7 +78,7 @@ modelUsers.login = function(email, pass, done) {
 modelUsers.countUser = function (id, callback) {
 
     if (mysql.connection) {
-      mysql.connection.query('SELECT COUNT(*) AS userCount FROM users WHERE email like "' + id + '"',
+      mysql.connection.query("SELECT COUNT(*) AS userCount FROM users WHERE email like '" + id + "'",
         function (error, rows) {
             if (error) {
               throw error;
