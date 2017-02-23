@@ -13,7 +13,7 @@ module.exports = function() {
     json: require('./bower.json'),
     directory: './bower_components/',
     ignorePath: '../..'
-  }; 
+  };  
   var nodeModules = 'node_modules';
 
   var config = {
