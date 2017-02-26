@@ -1,4 +1,35 @@
-# StrongerTogether
+# StrongerTogether Class Project
+
+# Created by Lluis Mataix and Carles Catalan
+## The project
+The main idea of this project was creating a space where people that gets diagnosed with some kind of illness or disease could face the mental struggle that's related by sharing with other people and creating an own space with thoughts, advices and experiences, receiving feedback and all together pass through it.
+
+## Ignored files
+You'll need to add your own .env file on /src/server/.env path and fill it with your own API Keys using the following guide:
+
+```
+SECRET_KEY='secret key'
+ID_FACEBOOK='id_facebook'
+SECRET_FACEBOOK='secret_facebook'
+CALLBACK_FACEBOOK='callback_facebook'
+ID_TWITTER='id_twitter'
+SECRET_TWITTER='secret_twitter'
+CALLBACK_TWITTER='callback_twitter' 
+```
+Also import the strongertogether.db and fill the config file with your own settings:
+```
+var mysql = require('mysql'),
+
+connection = mysql.createConnection({
+        host: 'Your_Host',
+        user: 'Your_User',
+        password: 'Your_Password',
+        database: 'Your_Database'
+      }
+);
+
+module.exports.connection = connection;
+```
 
 **Generated from HotTowel Angular**
 
