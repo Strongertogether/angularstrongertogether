@@ -1,6 +1,5 @@
 /*jshint node:true*/
 'use strict';
-//hola
 require('dotenv').load();
 var express = require('express');
 var session  = require('express-session');
